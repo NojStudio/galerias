@@ -31,15 +31,18 @@ galerias/
 
 > ⚠️ El link del QR queda fijo. Si renombras la carpeta del evento, tienes que regenerar el QR.
 
-## 2. Después del evento
+## 2. Después del evento (flujo con GitHub Desktop)
 
-1. Monse exporta de Lightroom las fotos seleccionadas en JPG, con el lado largo en 2500 px o más y calidad de 85 en adelante.
-2. Abre el **admin** en **Chrome o Edge** desde la computadora.
-3. **01 Carpeta del evento**: elige la carpeta `casa1916-casino` dentro de tu copia local del repo.
-4. **02 Fotos**: elige la carpeta con los JPG exportados.
-5. **03 Procesar**: deja activada la *Detección fina*, que sirve para encontrar caras en fotos de cuerpo completo. Calcula unos **2-4 s por foto** en una laptop; 400 fotos son ~20 min. Puedes pausar. Las miniaturas muestran cuántos rostros detectó en cada foto, y las que marcan 0 salen en rojo.
-6. Cuando diga ✓ Listo: GitHub Desktop → *Commit* → *Push*. En 1-2 min la galería ya busca por selfie.
-7. Si después agregas más fotos, repite el proceso. Las que ya estaban indexadas se omiten.
+1. Abre GitHub Desktop, selecciona el repo `galerias` y haz **Fetch origin → Pull** para bajar los últimos cambios.
+2. Exporta de Lightroom las fotos seleccionadas en JPG, con el lado largo de 2500 px o más.
+3. Abre **https://nojstudio.github.io/galerias/admin/** en **Chrome o Edge**. No uses el navegador integrado de Claude.
+4. **01**: haz clic en **Elegir carpeta** y selecciona `Documentos\GitHub\galerias\casa1916-casino`.
+   - Si sale el error en rojo, usa **"Sin carpeta: descargar .zip al final"**. Al terminar, descomprime el .zip **dentro** de `casa1916-casino`, reemplazando lo que pida.
+5. **02**: elige las fotos. **03**: Procesar, con la *Detección fina* activada.
+6. En GitHub Desktop vas a ver los cambios en `casa1916-casino/data` y `casa1916-casino/fotos`. Haz **Commit to main** y después **Push origin**.
+7. Espera 1-2 min y prueba con una selfie en el link del QR.
+
+> No subas las fotos arrastrándolas a github.com: la web aplana las carpetas y quedan fuera de su lugar.
 
 ## 3. Para un evento nuevo
 
