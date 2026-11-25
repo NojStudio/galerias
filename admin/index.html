@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Indexador de galerías · No'j Studio</title>
+<link rel="stylesheet" href="../_lib/fonts/fonts.css">
+<style>
+:root{--black:#0a0a0a;--white:#f4f2ed;--gray:#8a8a8a;--accent:#6fbdaa;--line:rgba(255,255,255,.09);--card:#121212}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.5;min-height:100vh}
+header{display:flex;align-items:center;gap:.8rem;padding:1.1rem 2rem;border-bottom:1px solid var(--line)}
+header b{font-family:'Bebas Neue';font-weight:400;font-size:1.2rem;letter-spacing:.18em}
+header span{color:var(--gray);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-left:auto}
+main{max-width:980px;margin:0 auto;padding:2.5rem 2rem 5rem}
+h1{font-family:'Bebas Neue';font-weight:400;font-size:2.8rem;letter-spacing:.04em;line-height:1}
+.lead{color:var(--gray);margin:.6rem 0 2.2rem;max-width:640px}
+.step{background:var(--card);border:1px solid var(--line);padding:1.6rem 1.8rem;margin-bottom:1rem}
+.step h2{font-family:'Bebas Neue';font-weight:400;font-size:1.35rem;letter-spacing:.08em;display:flex;gap:.7rem;align-items:baseline}
+.step h2 i{font-style:normal;color:var(--accent);font-size:1rem}
+.step p{color:var(--gray);font-size:.9rem;margin:.35rem 0 1rem}
+button,.btn{background:var(--accent);color:var(--black);border:0;padding:.75rem 1.4rem;font:500 .78rem 'DM Sans';letter-spacing:.12em;text-transform:uppercase;cursor:pointer;display:inline-flex;gap:.5rem;align-items:center}
+button.ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.25)}
+button:disabled{opacity:.35;cursor:not-allowed}
+.row{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
+.ok{color:var(--accent);font-size:.88rem}
+.muted{color:var(--gray);font-size:.85rem}
+label.f{display:flex;flex-direction:column;gap:.3rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+input[type=text],input[type=number]{background:#0d0d0d;border:1px solid rgba(255,255,255,.15);color:var(--white);padding:.6rem .75rem;font:300 .95rem 'DM Sans';min-width:0}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin-bottom:1rem}
+.chk{display:flex;flex-direction:row;gap:.5rem;align-items:center;font-size:.9rem;color:var(--white);text-transform:none;letter-spacing:0}
+.bar{height:4px;background:rgba(255,255,255,.08);margin:1.2rem 0 .6rem}
+.bar div{height:100%;width:0;background:var(--accent);transition:width .3s}
+.stats{display:flex;gap:2rem;flex-wrap:wrap;margin:.4rem 0 1rem}
+.stats div{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+.stats b{display:block;font-family:'Bebas Neue';font-weight:400;font-size:1.9rem;color:var(--white);letter-spacing:.03em}
+#log{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.74rem;color:var(--gray);max-height:180px;overflow:auto;background:#0d0d0d;padding:.8rem;border:1px solid var(--line);white-space:pre-wrap}
+#previews{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:4px;margin-top:1rem}
+#previews figure{position:relative;aspect-ratio:2/3;background:#1a1a1a;overflow:hidden}
+#previews img{width:100%;height:100%;object-fit:cover;display:block}
+#previews figcaption{position:absolute;right:4px;bottom:4px;background:rgba(0,0,0,.7);font-size:.7rem;padding:1px 6px}
+#previews figcaption.cero{background:#7a2a2a}
+#qrcanvas{width:100%;max-width:320px;border:1px solid var(--line);display:block;margin-top:1rem}
+.warn{border-left:2px solid #d9a14a;padding-left:.8rem;color:#d9c19a;font-size:.85rem;margin-top:.8rem}
+</style>
+</head>
+<body>
+<header>
+  <svg width="30" height="30" viewBox="0 0 100 100"><g stroke="#f4f2ed" stroke-width="6" stroke-linecap="square" fill="none"><polyline points="8,28 8,8 28,8"/><polyline points="72,8 92,8 92,28"/><polyline points="92,72 92,92 72,92"/><polyline points="28,92 8,92 8,72"/></g><line x1="20" y1="20" x2="80" y2="80" stroke="#f4f2ed" stroke-width="6" stroke-linecap="square"/><line x1="80" y1="20" x2="20" y2="80" stroke="#f4f2ed" stroke-width="6" stroke-linecap="square"/><circle cx="50" cy="50" r="6.5" fill="#0a0a0a"/><circle cx="50" cy="50" r="3.5" fill="#6fbdaa"/></svg>
+  <b>NO'J STUDIO</b><span>Indexador de galerías</span>
+</header>
+<main>
+  <h1>Preparar galería de evento</h1>
+  <p class="lead">Arrastra las fotos ya editadas. Aquí mismo se generan las versiones web, las miniaturas y el índice de rostros para la búsqueda por selfie. Nada se sube a internet desde esta página: todo se guarda en la carpeta del evento en tu computadora.</p>
+
+  <section class="step">
+    <h2><i>01</i> Carpeta del evento</h2>
+    <p>Elige la carpeta del evento dentro de tu copia del repo <b>galerias</b> (por ejemplo <code>galerias/casa1916-casino</code>). Si ya tiene fotos indexadas, las nuevas se agregan sin duplicar.</p>
+    <div class="row">
+      <button id="btnCarpeta">Elegir carpeta</button>
+      <span id="carpetaInfo" class="muted"></span>
+    </div>
+    <div id="sinFS" class="warn" hidden>Este navegador no permite escribir carpetas. Usa Chrome o Edge en computadora; si no, al final se descargará un .zip con todo para descomprimir dentro de la carpeta del evento.</div>
+  </section>
+
+  <section class="step">
+    <h2><i>02</i> Fotos</h2>
+    <p>JPG exportados de Lightroom (lado largo de 2500 px o más está bien). Se ordenan por nombre de archivo.</p>
+    <div class="row">
+      <button id="btnFotos" class="ghost">Elegir fotos</button>
+      <button id="btnFotosCarpeta" class="ghost">Elegir carpeta de fotos</button>
+      <span id="fotosInfo" class="muted"></span>
+    </div>
+    <input type="file" id="inFotos" accept="image/jpeg,image/png,image/webp" multiple hidden>
+    <input type="file" id="inFotosCarpeta" webkitdirectory multiple hidden>
+  </section>
+
+  <section class="step">
+    <h2><i>03</i> Procesar</h2>
+    <div class="grid3">
+      <label class="f">Lado largo web (px)<input type="number" id="cfgWeb" value="2000" min="1000" max="4000" step="100"></label>
+      <label class="f">Calidad JPG web<input type="number" id="cfgQ" value="0.86" min="0.5" max="0.98" step="0.01"></label>
+      <label class="f">Miniatura (px)<input type="number" id="cfgThumb" value="520" min="300" max="900" step="20"></label>
+      <label class="f">Confianza mínima rostro<input type="number" id="cfgConf" value="0.40" min="0.2" max="0.9" step="0.05"></label>
+    </div>
+    <label class="f chk"><input type="checkbox" id="cfgFina" checked> Detección fina (encuentra rostros pequeños en fotos de cuerpo completo y grupos; tarda ~3× más)</label>
+    <div class="row" style="margin-top:1.2rem">
+      <button id="btnProcesar" disabled>Procesar fotos</button>
+      <button id="btnPausa" class="ghost" disabled>Pausar</button>
+    </div>
+    <div class="bar"><div id="barra"></div></div>
+    <div class="stats">
+      <div>Fotos<b id="sFotos">0</b></div>
+      <div>Rostros<b id="sRostros">0</b></div>
+      <div>Sin rostro<b id="sCero">0</b></div>
+      <div>Tiempo restante<b id="sEta">—</b></div>
+    </div>
+    <div id="log"></div>
+    <div id="previews"></div>
+  </section>
+
+  <section class="step">
+    <h2><i>04</i> QR para el evento</h2>
+    <p>Genera la tarjeta con QR para imprimir y poner junto al backdrop. El link debe ser el de la carpeta del evento ya publicada.</p>
+    <div class="grid3">
+      <label class="f">Link de la galería<input type="text" id="qrUrl" placeholder="https://nojstudio.github.io/galerias/casa1916-casino/"></label>
+      <label class="f">Nombre del evento<input type="text" id="qrEvento" placeholder="Nombre del evento"></label>
+      <label class="f">Cliente<input type="text" id="qrCliente" placeholder="Cliente"></label>
+      <label class="f">Color de acento<input type="text" id="qrAcento" value="#6fbdaa"></label>
+      <label class="f">Texto de disponibilidad<input type="text" id="qrDisp" value="Disponibles a partir del 2 de diciembre"></label>
+    </div>
+    <div class="row"><button id="btnQr" class="ghost">Generar tarjeta</button><button id="btnQrDesc" disabled>Descargar PNG (10×15 cm)</button></div>
+    <canvas id="qrcanvas" hidden></canvas>
+  </section>
+</main>
+
+<script src="../_lib/face-api.js"></script>
+<script src="../_lib/rostros.js"></script>
+<script src="../_lib/jszip.min.js"></script>
+<script src="../_lib/qrcode.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const hayFS = 'showDirectoryPicker' in window;
+if (!hayFS) $('sinFS').hidden = false;
+
+let carpeta = null;          // FileSystemDirectoryHandle del evento
+let existentes = { fotos: [], rostros: [], escala: Rostros.ESCALA };
+let archivos = [];
+let pausado = false, corriendo = false;
+
+function log(t) { const l = $('log'); l.textContent += t + '\n'; l.scrollTop = l.scrollHeight; }
+const natural = (a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+const limpiar = n => n.replace(/\.[^.]+$/, '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '') + '.jpg';
+
+async function leerJSON(dir, ruta) {
+  try {
+    const partes = ruta.split('/'); let d = dir;
+    for (const p of partes.slice(0, -1)) d = await d.getDirectoryHandle(p);
+    const f = await (await d.getFileHandle(partes.at(-1))).getFile();
+    return JSON.parse(await f.text());
+  } catch (e) { return null; }
+}
+async function escribir(dir, ruta, datos) {
+  const partes = ruta.split('/'); let d = dir;
+  for (const p of partes.slice(0, -1)) d = await d.getDirectoryHandle(p, { create: true });
+  const fh = await d.getFileHandle(partes.at(-1), { create: true });
+  const w = await fh.createWritable(); await w.write(datos); await w.close();
+}
+
+$('btnCarpeta').onclick = async () => {
+  if (!hayFS) { $('carpetaInfo').textContent = 'Se usará descarga .zip al final.'; actualizar(); return; }
+  try {
+    carpeta = await window.showDirectoryPicker({ id: 'galeria-evento', mode: 'readwrite' });
+    const p = await leerJSON(carpeta, 'data/fotos.json');
+    const r = await leerJSON(carpeta, 'data/rostros.json');
+    existentes = { fotos: p?.fotos || [], rostros: r?.rostros || [], escala: r?.escala || Rostros.ESCALA };
+    const tieneIndex = await carpeta.getFileHandle('index.html').then(() => true, () => false);
+    $('carpetaInfo').innerHTML = `<span class="ok">✓ ${carpeta.name}</span> · ${existentes.fotos.length} fotos ya indexadas` + (tieneIndex ? '' : ' · <span style="color:#d9a14a">ojo: esta carpeta no tiene index.html, ¿es la del evento?</span>');
+    if (!$('qrUrl').value) $('qrUrl').value = `${location.origin}${location.pathname.replace(/admin\/?(index\.html)?$/, '')}${carpeta.name}/`;
+    const cfg = await leerConfig();
+    if (cfg?.evento && !$('qrEvento').value) $('qrEvento').value = cfg.evento;
+    if (cfg?.cliente && !$('qrCliente').value) $('qrCliente').value = cfg.cliente;
+    if (cfg?.acento) $('qrAcento').value = cfg.acento;
+    if (cfg?.disponibleDesde) $('qrDisp').value = 'Disponibles a partir del ' + cfg.disponibleDesde;
+  } catch (e) { if (e.name !== 'AbortError') log('Error carpeta: ' + e.message); }
+  actualizar();
+};
+async function leerConfig() {
+  try {
+    const t = await (await (await carpeta.getFileHandle('config.js')).getFile()).text();
+    const w = {}; new Function('window', t)(w); return w.GALERIA;
+  } catch (e) { return null; }
+}
+
+$('btnFotos').onclick = () => $('inFotos').click();
+$('btnFotosCarpeta').onclick = () => $('inFotosCarpeta').click();
+function tomarArchivos(lista) {
+  archivos = [...lista].filter(f => /\.(jpe?g|png|webp)$/i.test(f.name)).sort((a, b) => natural(a.name, b.name));
+  const ya = new Set(existentes.fotos.map(f => f.f));
+  const nuevos = archivos.filter(f => !ya.has(limpiar(f.name))).length;
+  const mb = archivos.reduce((s, f) => s + f.size, 0) / 1048576;
+  $('fotosInfo').innerHTML = `<span class="ok">✓ ${archivos.length} fotos</span> · ${mb.toFixed(0)} MB` + (nuevos < archivos.length ? ` · ${archivos.length - nuevos} ya estaban (se omiten)` : '');
+  actualizar();
+}
+$('inFotos').onchange = e => tomarArchivos(e.target.files);
+$('inFotosCarpeta').onchange = e => tomarArchivos(e.target.files);
+function actualizar() { $('btnProcesar').disabled = corriendo || !archivos.length || (hayFS && !carpeta); }
+
+$('btnPausa').onclick = () => { pausado = !pausado; $('btnPausa').textContent = pausado ? 'Continuar' : 'Pausar'; };
+
+function canvasBlob(c, q) { return new Promise(r => c.toBlob(r, 'image/jpeg', q)); }
+function reducir(src, max) {
+  const k = Math.min(1, max / Math.max(src.width, src.height));
+  if (k === 1) return src;
+  // reducción en pasos para mejor nitidez
+  let c = src;
+  while (Math.max(c.width, c.height) * 0.5 > max) {
+    const n = document.createElement('canvas'); n.width = Math.round(c.width / 2); n.height = Math.round(c.height / 2);
+    const x = n.getContext('2d'); x.imageSmoothingQuality = 'high'; x.drawImage(c, 0, 0, n.width, n.height); c = n;
+  }
+  const n = document.createElement('canvas'); n.width = Math.round(src.width * k); n.height = Math.round(src.height * k);
+  const x = n.getContext('2d'); x.imageSmoothingQuality = 'high'; x.drawImage(c, 0, 0, n.width, n.height);
+  return n;
+}
+function recorte(c, x, y, w, h) {
+  const n = document.createElement('canvas'); n.width = w; n.height = h;
+  n.getContext('2d').drawImage(c, x, y, w, h, 0, 0, w, h); return n;
+}
+function iou(a, b) {
+  const x1 = Math.max(a.x, b.x), y1 = Math.max(a.y, b.y), x2 = Math.min(a.x + a.width, b.x + b.width), y2 = Math.min(a.y + a.height, b.y + b.height);
+  const i = Math.max(0, x2 - x1) * Math.max(0, y2 - y1);
+  return i / Math.min(a.width * a.height, b.width * b.height);
+}
+// Detecta en la imagen completa y, si se pide, en 4 cuadrantes traslapados (para rostros pequeños)
+async function detectar(c, conf, fina) {
+  let todas = (await Rostros.rostrosDeFoto(c, conf)).map(r => ({ ...r, box: { x: r.box.x, y: r.box.y, width: r.box.width, height: r.box.height }, res: 1 }));
+  if (fina) {
+    const tw = Math.round(c.width * 0.6), th = Math.round(c.height * 0.6);
+    for (const [ox, oy] of [[0, 0], [c.width - tw, 0], [0, c.height - th], [c.width - tw, c.height - th]]) {
+      const sub = await Rostros.rostrosDeFoto(recorte(c, ox, oy, tw, th), conf);
+      for (const r of sub) todas.push({ ...r, box: { x: r.box.x + ox, y: r.box.y + oy, width: r.box.width, height: r.box.height }, res: 2 });
+    }
+  }
+  // fusiona duplicados: conserva la de mayor resolución (cuadrante) y luego la de mayor score
+  todas.sort((a, b) => (b.res - a.res) || (b.score - a.score));
+  const final = [];
+  for (const r of todas) if (!final.some(f => iou(f.box, r.box) > 0.4)) final.push(r);
+  return final;
+}
+
+$('btnProcesar').onclick = async () => {
+  corriendo = true; pausado = false; actualizar();
+  $('btnPausa').disabled = false; $('previews').innerHTML = '';
+  const web = +$('cfgWeb').value, q = +$('cfgQ').value, th = +$('cfgThumb').value, conf = +$('cfgConf').value, fina = $('cfgFina').checked;
+  const zip = hayFS ? null : new JSZip();
+  const fotos = existentes.fotos.slice(), rostros = existentes.rostros.slice();
+  const escala = existentes.escala;
+  const ya = new Set(fotos.map(f => f.f));
+  const cola = archivos.filter(f => !ya.has(limpiar(f.name)));
+  let hechos = 0, nRost = 0, nCero = 0; const t0 = performance.now();
+  log(`Cargando modelos…`);
+  await Rostros.cargar(['ssdMobilenetv1', 'faceLandmark68Net', 'faceRecognitionNet']);
+  log(`Procesando ${cola.length} fotos nuevas (${fotos.length} previas).`);
+
+  const guardarIndice = async () => {
+    const p = JSON.stringify({ version: 1, actualizado: new Date().toISOString(), fotos });
+    const r = JSON.stringify({ version: 1, escala, rostros });
+    if (zip) { zip.file('data/fotos.json', p); zip.file('data/rostros.json', r); }
+    else { await escribir(carpeta, 'data/fotos.json', p); await escribir(carpeta, 'data/rostros.json', r); }
+  };
+
+  for (const archivo of cola) {
+    while (pausado) await new Promise(r => setTimeout(r, 300));
+    const nombre = limpiar(archivo.name);
+    try {
+      const orig = await Rostros.aCanvas(archivo, 6000);
+      const cWeb = reducir(orig, web);
+      const cTh = reducir(cWeb, th);
+      const bWeb = await canvasBlob(cWeb, q), bTh = await canvasBlob(cTh, 0.78);
+      if (zip) { zip.file('fotos/web/' + nombre, bWeb); zip.file('fotos/thumb/' + nombre, bTh); }
+      else { await escribir(carpeta, 'fotos/web/' + nombre, bWeb); await escribir(carpeta, 'fotos/thumb/' + nombre, bTh); }
+      const det = await detectar(cWeb, conf, fina);
+      const idx = fotos.length;
+      fotos.push({ f: nombre, w: cWeb.width, h: cWeb.height, kb: Math.round(bWeb.size / 1024) });
+      for (const d of det) rostros.push([idx, Rostros.codificar(d.descriptor, escala)]);
+      nRost += det.length; if (!det.length) nCero++;
+      const fig = document.createElement('figure');
+      fig.innerHTML = `<img src="${URL.createObjectURL(bTh)}"><figcaption class="${det.length ? '' : 'cero'}">${det.length} ☺</figcaption>`;
+      $('previews').prepend(fig);
+      if ($('previews').children.length > 60) $('previews').lastChild.remove();
+    } catch (e) { log(`✗ ${archivo.name}: ${e.message}`); }
+    hechos++;
+    if (hechos % 15 === 0) await guardarIndice();   // guardado parcial por si se cierra la pestaña
+    const seg = (performance.now() - t0) / 1000 / hechos * (cola.length - hechos);
+    $('barra').style.width = (hechos / cola.length * 100) + '%';
+    $('sFotos').textContent = fotos.length; $('sRostros').textContent = nRost; $('sCero').textContent = nCero;
+    $('sEta').textContent = seg > 90 ? Math.round(seg / 60) + ' min' : Math.round(seg) + ' s';
+  }
+  await guardarIndice();
+  if (zip) {
+    log('Generando .zip…');
+    const b = await zip.generateAsync({ type: 'blob' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'galeria-datos.zip'; a.click();
+  }
+  existentes = { fotos, rostros, escala };
+  const min = ((performance.now() - t0) / 60000).toFixed(1);
+  log(`✓ Listo en ${min} min: ${fotos.length} fotos en total, ${rostros.length} rostros indexados.`);
+  log(zip ? 'Descomprime el .zip dentro de la carpeta del evento y publica.' : 'Ahora publica los cambios del repo (GitHub Desktop → Commit → Push).');
+  $('sEta').textContent = '✓';
+  corriendo = false; $('btnPausa').disabled = true; actualizar();
+};
+
+/* ---------- Tarjeta QR ---------- */
+const LOGO = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g stroke="#f4f2ed" stroke-width="6" stroke-linecap="square" fill="none"><polyline points="8,28 8,8 28,8"/><polyline points="72,8 92,8 92,28"/><polyline points="92,72 92,92 72,92"/><polyline points="28,92 8,92 8,72"/></g><line x1="20" y1="20" x2="80" y2="80" stroke="#f4f2ed" stroke-width="6" stroke-linecap="square"/><line x1="80" y1="20" x2="20" y2="80" stroke="#f4f2ed" stroke-width="6" stroke-linecap="square"/><circle cx="50" cy="50" r="6.5" fill="#0a0a0a"/><circle cx="50" cy="50" r="3.5" fill="#6fbdaa"/></svg>`;
+function imgDeSvg(svg) { return new Promise(r => { const i = new Image(); i.onload = () => r(i); i.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg); }); }
+function ajustar(ctx, texto, max, tam, fuente) { let s = tam; do { ctx.font = `${s}px ${fuente}`; s -= 4; } while (ctx.measureText(texto).width > max && s > 30); }
+$('btnQr').onclick = async () => {
+  const url = $('qrUrl').value.trim(); if (!url) { $('qrUrl').focus(); return; }
+  await Promise.all([document.fonts.load('200px "Bebas Neue"'), document.fonts.load('300 40px "DM Sans"'), document.fonts.load('500 40px "DM Sans"')]);
+  const W = 1200, H = 1800, c = $('qrcanvas'); c.width = W; c.height = H; const x = c.getContext('2d');
+  x.fillStyle = '#0a0a0a'; x.fillRect(0, 0, W, H);
+  x.strokeStyle = 'rgba(244,242,237,.18)'; x.lineWidth = 2; x.strokeRect(50, 50, W - 100, H - 100);
+  const ac = $('qrAcento').value || '#6fbdaa', cli = $('qrCliente').value.trim();
+  x.textAlign = 'center'; x.fillStyle = ac; x.font = '500 34px "DM Sans"';
+  x.letterSpacing = '8px'; x.fillText(cli ? (cli + " × NO'J STUDIO").toUpperCase() : 'ENCUENTRA TUS FOTOS', W / 2, 200); x.letterSpacing = '0px';
+  x.fillStyle = '#f4f2ed'; const ev = ($('qrEvento').value || 'Galería').toUpperCase();
+  ajustar(x, ev, W - 220, 150, '"Bebas Neue"'); x.fillText(ev, W / 2, 350);
+  x.font = '300 40px "DM Sans"'; x.fillStyle = 'rgba(244,242,237,.75)';
+  x.fillText('Encuentra tus fotos: escanea, tómate una selfie', W / 2, 440);
+  x.fillText('y descarga todas las fotos donde apareces.', W / 2, 492);
+  const qr = qrcode(0, 'M'); qr.addData(url); qr.make();
+  const n = qr.getModuleCount(), lado = 620, cel = Math.floor(lado / n), real = cel * n, q0 = (W - real) / 2, y0 = 580;
+  x.fillStyle = '#f4f2ed'; x.fillRect(q0 - 44, y0 - 44, real + 88, real + 88);
+  x.fillStyle = '#0a0a0a';
+  for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (qr.isDark(r, k)) x.fillRect(q0 + k * cel, y0 + r * cel, cel, cel);
+  const yt = y0 + real + 44 + 90;
+  x.fillStyle = ac; x.font = '500 36px "DM Sans"'; x.fillText($('qrDisp').value.toUpperCase(), W / 2, yt);
+  x.fillStyle = 'rgba(244,242,237,.5)'; x.font = '300 30px "DM Sans"'; x.fillText(url.replace(/^https?:\/\//, '').replace(/\/$/, ''), W / 2, yt + 56);
+  const logo = await imgDeSvg(LOGO); x.drawImage(logo, W / 2 - 205, H - 245, 74, 74);
+  x.textAlign = 'left'; x.fillStyle = '#f4f2ed'; x.font = '58px "Bebas Neue"'; x.fillText("NO'J STUDIO", W / 2 - 110, H - 188);
+  x.fillStyle = 'rgba(244,242,237,.55)'; x.font = '300 26px "DM Sans"'; x.fillText('Fotografía del evento', W / 2 - 110, H - 150);
+  c.hidden = false; $('btnQrDesc').disabled = false;
+};
+$('btnQrDesc').onclick = () => { const a = document.createElement('a'); a.download = 'qr-galeria.png'; a.href = $('qrcanvas').toDataURL('image/png'); a.click(); };
+</script>
+</body>
+</html>
