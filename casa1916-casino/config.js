@@ -2,12 +2,15 @@
 window.GALERIA = {
   evento: "Noche de Casino",                 // nombre grande en la portada
   cliente: "Casa 1916",                      // aparece como "Casa 1916 × No'j Studio"
+  usuario: "casa1916",                        // nombre de usuario arriba (estilo Instagram)
+  avatarTexto: "1916",                       // texto del círculo si no hay logo
   logoCliente: "",                           // opcional: "assets/logo-cliente.png" (PNG/SVG claro, fondo transparente)
   fecha: "1 de diciembre de 2026",
   lugar: "",                                 // opcional
   disponibleDesde: "2 de diciembre",         // se muestra mientras no hay fotos publicadas
   hashtag: "",                               // opcional: "#NochedeCasino"
-  acento: "#c8b89a",                         // color de acento (dorado casino). Verde No'j: "#6fbdaa"
+  acento: "#c8b89a",                         // color principal (dorado casino). Verde No'j: "#6fbdaa"
+  acento2: "#a3262a",                        // segundo color del aro (rojo casino)
 
   // No'j
   instagram: "nojstudiomx",

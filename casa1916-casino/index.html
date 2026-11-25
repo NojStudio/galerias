@@ -3,196 +3,260 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="theme-color" content="#000000">
 <meta name="robots" content="noindex">
-<title>Casa 1916 · Noche de Casino · Fotos</title>
-<meta name="description" content="Encuentra tus fotos del evento con una selfie. Fotografía por No'j Studio.">
-<meta property="og:title" content="Casa 1916 · Noche de Casino — Encuentra tus fotos">
-<meta property="og:description" content="Tómate una selfie y descarga todas las fotos donde apareces.">
-<link rel="stylesheet" href="../_lib/fonts/fonts.css">
+<title>Fotos del evento</title>
+<meta property="og:title" content="Encuentra tus fotos del evento">
+<meta property="og:description" content="Tómate una selfie y descarga todas las fotos donde apareces. Fotografía por No'j Studio.">
 <script src="config.js"></script>
 <style>
-:root{--black:#0a0a0a;--white:#f4f2ed;--gray:#8a8a8a;--dim:rgba(244,242,237,.6);--accent:#6fbdaa;--accent2:#c8b89a;--line:rgba(255,255,255,.08)}
+:root{--bg:#000;--fg:#f5f5f5;--fg2:#a8a8a8;--fg3:#737373;--line:#262626;--btn:#262626;--btn-h:#363636;--accent:#c8b89a;--accent2:#a3262a;--ink:#0a0a0a;--safe-b:env(safe-area-inset-bottom)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth}
-body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.5;min-height:100vh;overflow-x:hidden}
-a{color:inherit}
-.bebas{font-family:'Bebas Neue',sans-serif;font-weight:400}
-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.25rem;padding-top:max(.9rem,env(safe-area-inset-top));background:rgba(10,10,10,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.marca{display:flex;align-items:center;gap:.6rem;text-decoration:none}
-.marca b{font-family:'Bebas Neue';font-weight:400;font-size:1.1rem;letter-spacing:.18em}
-.cliente{display:flex;align-items:center;gap:.55rem;color:var(--dim);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;max-width:50%}
-.cliente img{max-height:28px;max-width:120px;object-fit:contain}
-.cliente span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-
-/* HERO */
-.hero{position:relative;padding:3.2rem 1.4rem 2.6rem;max-width:760px;margin:0 auto;text-align:center}
-.marcas-agua{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
-.marcas-agua svg{position:absolute;width:520px;right:-180px;top:-60px;opacity:.035}
-.eyebrow{display:inline-flex;align-items:center;gap:.8rem;color:var(--accent);font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase}
-.eyebrow::before,.eyebrow::after{content:'';width:1.8rem;height:1px;background:var(--accent)}
-h1{font-family:'Bebas Neue';font-weight:400;font-size:clamp(3.4rem,15vw,7rem);line-height:.92;letter-spacing:.02em;margin:1.1rem 0 .7rem}
-.meta{color:var(--gray);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
-.sub{font-size:1.08rem;color:var(--dim);margin:1.8rem auto 1.6rem;max-width:430px}
-.acciones{display:flex;flex-direction:column;gap:.7rem;max-width:360px;margin:0 auto}
-.btn{appearance:none;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.6rem;padding:1.05rem 1.4rem;font:500 .8rem 'DM Sans';letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:background .2s,opacity .2s}
-.btn-p{background:var(--accent);color:var(--black)}
-.btn-p:active{opacity:.85}
-.btn-s{background:transparent;color:var(--white);border:1px solid rgba(244,242,237,.22)}
-.btn svg{width:18px;height:18px;flex:none}
-.privado{display:flex;gap:.5rem;justify-content:center;align-items:flex-start;color:var(--gray);font-size:.76rem;margin:1.2rem auto 0;max-width:300px;text-align:left}.privado svg{flex:none;margin-top:3px}
-.ver-todas{display:inline-block;margin-top:1.6rem;color:var(--dim);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(244,242,237,.25);padding-bottom:2px}
-
-/* ESPERA */
-.espera{max-width:480px;margin:0 auto 3rem;padding:2rem 1.6rem;border:1px solid var(--line);text-align:center}
-.espera .bebas{font-size:2rem;letter-spacing:.04em;color:var(--accent)}
-.espera p{color:var(--dim);margin-top:.5rem}
-
-/* ESTADO */
-.estado{display:none;flex-direction:column;align-items:center;gap:1.1rem;padding:3rem 1.4rem;text-align:center}
-.estado.on{display:flex}
-.estado img{width:120px;height:120px;object-fit:cover;border-radius:50%;border:1px solid var(--line)}
-.scan{position:relative;width:120px;height:120px}
-.scan::after{content:'';position:absolute;left:-6px;right:-6px;height:2px;background:var(--accent);box-shadow:0 0 14px var(--accent);animation:scan 1.4s ease-in-out infinite alternate;top:0}
-@keyframes scan{to{top:100%}}
-.estado p{color:var(--dim);font-size:.92rem}
-
-/* SECCIONES / GRID */
-section.bloque{padding:2rem 0 2.6rem;border-top:1px solid var(--line)}
-.cab{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;padding:0 1.25rem 1.1rem;max-width:1400px;margin:0 auto}
-.cab h2{font-family:'Bebas Neue';font-weight:400;font-size:2.2rem;letter-spacing:.03em;line-height:1}
-.cab small{display:block;color:var(--gray);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.35rem}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;max-width:1400px;margin:0 auto}
-@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:1050px){.grid{grid-template-columns:repeat(4,1fr);padding:0 1.25rem}}
-.grid button{position:relative;border:0;padding:0;background:#151515;aspect-ratio:4/5;overflow:hidden;cursor:zoom-in;display:block}
-.grid img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .4s,transform .6s}
-.grid img.ok{opacity:1}
-.grid button:hover img{transform:scale(1.03)}
-.pie-res{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;padding:1.4rem 1.25rem 0}
-.pie-res .btn{min-width:220px}
-.vacio{padding:1rem 1.4rem 0;max-width:520px;margin:0 auto;text-align:center;color:var(--dim)}
-.vacio ul{list-style:none;margin:1rem 0 1.4rem;color:var(--gray);font-size:.9rem}
-.vacio li::before{content:'— ';color:var(--accent)}
-#mas{display:block;margin:1.4rem auto 0}
-
-/* LIGHTBOX */
-.lb{position:fixed;inset:0;z-index:50;background:#060606;display:none;flex-direction:column}
-.lb.on{display:flex}
-.lb-top{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.1rem;padding-top:max(.9rem,env(safe-area-inset-top));color:var(--gray);font-size:.75rem;letter-spacing:.16em}
-.lb-x{background:none;border:0;color:var(--white);font-size:1.9rem;line-height:1;cursor:pointer;padding:.2rem .5rem}
-.lb-img{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;position:relative;touch-action:pan-y}
-.lb-img img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
-.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);border:0;color:var(--white);width:46px;height:64px;font-size:1.6rem;cursor:pointer;display:none}
-@media(hover:hover){.lb-nav{display:block}}
-.lb-prev{left:0}.lb-next{right:0}
-.lb-bot{display:flex;gap:.6rem;padding:1rem 1.1rem;padding-bottom:max(1rem,env(safe-area-inset-bottom));justify-content:center}
-.lb-bot .btn{flex:1;max-width:260px}
-
-/* FOOTER */
-footer{border-top:1px solid var(--line);padding:3rem 1.4rem calc(3rem + env(safe-area-inset-bottom));text-align:center}
-footer .bebas{font-size:2.3rem;letter-spacing:.03em;line-height:1;margin:1rem 0 .5rem}
-footer p{color:var(--dim);max-width:420px;margin:0 auto 1.6rem}
-footer .acciones{max-width:320px}
-footer .legal{color:#555;font-size:.7rem;margin-top:2rem;letter-spacing:.06em}
-
-.toast{position:fixed;left:50%;bottom:calc(1.2rem + env(safe-area-inset-bottom));transform:translate(-50%,calc(100% + 4rem));visibility:hidden;background:var(--white);color:var(--black);padding:.85rem 1.2rem;font-size:.86rem;z-index:60;transition:transform .35s;max-width:calc(100% - 2rem);text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.4)}
-.toast.on{transform:translate(-50%,0);visibility:visible}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--fg);font:14px/1.38 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.app{max-width:600px;margin:0 auto;min-height:100vh;position:relative;padding-bottom:calc(90px + var(--safe-b))}
 [hidden]{display:none!important}
+
+/* barra superior */
+.top{position:sticky;top:0;z-index:30;height:52px;padding:env(safe-area-inset-top) 12px 0 16px;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.handle{display:flex;align-items:center;gap:6px;font-weight:700;font-size:20px;letter-spacing:-.01em}
+.verif{width:15px;height:15px;color:var(--accent)}
+.top-r{display:flex;align-items:center;gap:6px}
+.top-r button,.top-r a{width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.noj-mark{width:24px;height:24px}
+
+/* perfil */
+.perfil{padding:6px 16px 0}
+.fila{display:flex;align-items:center;gap:24px}
+.avatar{position:relative;width:90px;height:90px;border-radius:50%;padding:3px;background:conic-gradient(from 200deg,var(--accent),var(--accent2),var(--accent),var(--accent2),var(--accent));flex:none}
+.av-in{width:100%;height:100%;border-radius:50%;border:3px solid var(--bg);background:#121212;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.av-in img{width:78%;height:78%;object-fit:contain}
+.av-txt{font:700 21px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.02em;color:var(--accent)}
+.av-plus{position:absolute;right:0;bottom:2px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--ink);border:3px solid var(--bg);display:flex;align-items:center;justify-content:center}
+.av-plus svg{width:13px;height:13px;stroke-width:3}
+.stats{flex:1;display:flex;justify-content:space-around;text-align:center;font-size:13px;color:#e0e0e0}
+.stats b{display:block;font-size:17px;font-weight:700;color:var(--fg)}
+.bio{padding:12px 0 0;font-size:14px;line-height:1.4}
+.bio b{font-weight:600}
+.bio .cat{color:var(--fg2)}
+.bio a{color:#e0f1f9;font-weight:500}
+.botones{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:14px}
+.b{display:flex;align-items:center;justify-content:center;gap:6px;height:34px;border-radius:8px;background:var(--btn);font-weight:600;font-size:13.5px;transition:background .15s}
+.b:active{background:var(--btn-h)}
+.b.pri{background:var(--accent);color:var(--ink)}
+.b.pri:active{filter:brightness(.9)}
+.b svg{width:16px;height:16px;stroke-width:2.2}
+
+/* destacadas */
+.dest{display:flex;gap:18px;padding:16px 16px 14px;overflow-x:auto;scrollbar-width:none}
+.dest::-webkit-scrollbar{display:none}
+.d{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;flex:none;width:66px;text-align:center}
+.d .c{width:64px;height:64px;border-radius:50%;border:1px solid #3a3a3a;padding:3px}
+.d .c span{width:100%;height:100%;border-radius:50%;background:#121212;display:flex;align-items:center;justify-content:center}
+.d .c.on{border:0;padding:2px;background:conic-gradient(from 200deg,var(--accent),var(--accent2),var(--accent),var(--accent2),var(--accent))}
+.d .c.on span{border:2px solid var(--bg)}
+.d svg{width:26px;height:26px}
+
+/* tabs */
+.tabs{position:sticky;top:calc(52px + env(safe-area-inset-top));z-index:20;display:grid;grid-template-columns:1fr 1fr;background:var(--bg);border-bottom:1px solid #1c1c1c}
+.tab{position:relative;height:46px;display:flex;align-items:center;justify-content:center;color:var(--fg3)}
+.tab.on{color:var(--fg);box-shadow:inset 0 -1.5px 0 var(--fg)}
+.tab svg{width:24px;height:24px}
+.badge{position:absolute;top:8px;left:calc(50% + 10px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--accent);color:var(--ink);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px}
+.g{position:relative;aspect-ratio:3/4;background:#111;overflow:hidden;display:block;padding:0}
+.g img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .35s}
+.g img.ok{opacity:1}
+.g .chip{position:absolute;left:5px;bottom:5px;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;background:rgba(0,0,0,.62)}
+#mas{height:1px}
+
+/* vacíos */
+.vacio{padding:54px 32px 40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
+.vacio .circ{width:78px;height:78px;border-radius:50%;border:2px solid var(--fg);display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+.vacio .circ svg{width:38px;height:38px;stroke-width:1.4}
+.vacio h3{font-size:24px;font-weight:800;letter-spacing:-.01em}
+.vacio p{color:var(--fg2);max-width:300px}
+.vacio .b{padding:0 18px;margin-top:8px;height:38px}
+.tips{color:var(--fg2);font-size:13px;text-align:left;list-style:none;display:flex;flex-direction:column;gap:3px}
+.tips li::before{content:'·  ';color:var(--accent);font-weight:700}
+
+.res-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px}
+.res-head b{font-size:15px;font-weight:700}
+.res-head button{color:#e0f1f9;font-weight:600;font-size:13.5px}
+.sub-head{padding:22px 16px 10px;font-size:15px;font-weight:700}
+.sub-head span{display:block;font-size:12.5px;font-weight:400;color:var(--fg2);margin-top:2px}
+
+/* barra inferior */
+.barra{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:600px;z-index:25;padding:24px 12px calc(14px + var(--safe-b));background:linear-gradient(transparent,#000 40%);display:flex;gap:8px}
+.barra .b{flex:1;height:46px;border-radius:10px;font-size:14px}
+
+.pie{padding:34px 16px 10px;text-align:center;color:var(--fg3);font-size:12px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.pie .noj{display:flex;align-items:center;gap:7px;color:var(--fg2);font-weight:600;font-size:12.5px}
+.pie .noj svg{width:16px;height:16px}
+
+/* escaneo */
+.scan{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:24px;text-align:center}
+.ring{position:relative;width:190px;height:190px;border-radius:50%;padding:5px}
+.ring::before{content:'';position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--accent) 0 25%,transparent 25% 50%,var(--accent2) 50% 75%,transparent 75%);animation:spin 1.1s linear infinite;-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px));mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px))}
+@keyframes spin{to{transform:rotate(1turn)}}
+.ring img{position:relative;width:100%;height:100%;border-radius:50%;object-fit:cover;border:6px solid #000}
+.ring .linea{position:absolute;left:18%;right:18%;height:2px;top:20%;background:var(--accent);box-shadow:0 0 18px 2px var(--accent);border-radius:2px;animation:barre 1.6s ease-in-out infinite alternate}
+@keyframes barre{to{top:78%}}
+.scan b{font-size:20px;font-weight:700}
+.scan span{color:var(--fg2);max-width:280px}
+
+/* feed (vista de publicación) */
+.feed{position:fixed;inset:0;z-index:50;background:var(--bg);overflow-y:auto;overscroll-behavior:contain}
+.feed-top{position:sticky;top:0;z-index:2;height:calc(48px + env(safe-area-inset-top));padding-top:env(safe-area-inset-top);display:grid;grid-template-columns:48px 1fr 48px;align-items:center;background:rgba(0,0,0,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);max-width:600px;margin:0 auto}
+.feed-top button{width:48px;height:48px;display:flex;align-items:center;justify-content:center}
+.feed-top .t{text-align:center;line-height:1.15}
+.feed-top .t small{display:block;font-size:11px;color:var(--fg2);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.feed-top .t b{font-size:16px;font-weight:700}
+.feed-list{max-width:600px;margin:0 auto;padding-bottom:calc(40px + var(--safe-b))}
+.post{padding-bottom:14px}
+.post-h{display:flex;align-items:center;gap:10px;padding:10px 12px}
+.mini{width:34px;height:34px;border-radius:50%;padding:2px;background:conic-gradient(from 200deg,var(--accent),var(--accent2),var(--accent));flex:none}
+.mini span{width:100%;height:100%;border-radius:50%;border:2px solid var(--bg);background:#121212;display:flex;align-items:center;justify-content:center;font-size:8.5px;font-weight:700;color:var(--accent);overflow:hidden}
+.mini img{width:78%;height:78%;object-fit:contain}
+.post-h .n{display:flex;flex-direction:column;line-height:1.2}
+.post-h .n b{font-size:13.5px;font-weight:600}
+.post-h .n span{font-size:12px;color:#e0e0e0}
+.post-img{position:relative;width:100%;background:#111 center/cover no-repeat;user-select:none;-webkit-user-select:none}
+.post-img img{width:100%;height:100%;display:block;object-fit:cover}
+.acc{display:flex;align-items:center;gap:4px;padding:6px 6px 2px}
+.acc button{width:42px;height:42px;display:flex;align-items:center;justify-content:center}
+.acc .esp{flex:1}
+.acc .guardar{width:auto;height:34px;padding:0 14px;border-radius:8px;background:var(--btn);font-weight:600;font-size:13px;gap:6px;margin-right:6px}
+.acc .guardar svg{width:17px;height:17px;stroke-width:2.2}
+.corazon.on{color:#ff3040}
+.corazon.on svg{fill:#ff3040;stroke:#ff3040}
+.cap{padding:4px 12px 0;font-size:13.5px}
+.cap b{font-weight:600}
+.cap a{color:#e0f1f9}
+.fecha{padding:5px 12px 0;font-size:11.5px;color:var(--fg2)}
+.pop{position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;pointer-events:none;opacity:0}
+.pop svg{width:100%;height:100%;fill:#fff;stroke:none;filter:drop-shadow(0 4px 20px rgba(0,0,0,.4))}
+.pop.on{animation:pop .9s ease-out}
+@keyframes pop{0%{opacity:0;transform:scale(.4)}15%{opacity:1;transform:scale(1.15)}30%{transform:scale(.95)}45%{transform:scale(1)}80%{opacity:1}100%{opacity:0;transform:scale(1)}}
+
+.toast{position:fixed;left:50%;bottom:calc(88px + var(--safe-b));transform:translate(-50%,20px);opacity:0;visibility:hidden;background:#262626;color:var(--fg);padding:12px 16px;border-radius:12px;font-size:13.5px;font-weight:500;z-index:70;transition:all .3s;max-width:calc(100% - 32px);text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.toast.on{transform:translate(-50%,0);opacity:1;visibility:visible}
+@media(min-width:620px){.app{border-left:1px solid #121212;border-right:1px solid #121212}}
 </style>
 </head>
 <body>
+<div class="app">
 
-<nav>
-  <a class="marca" id="lnkSitio" href="#">
-    <svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true"><g stroke="#f4f2ed" stroke-width="6" stroke-linecap="square" fill="none"><polyline points="8,28 8,8 28,8"/><polyline points="72,8 92,8 92,28"/><polyline points="92,72 92,92 72,92"/><polyline points="28,92 8,92 8,72"/></g><line x1="20" y1="20" x2="80" y2="80" stroke="#f4f2ed" stroke-width="6" stroke-linecap="square"/><line x1="80" y1="20" x2="20" y2="80" stroke="#f4f2ed" stroke-width="6" stroke-linecap="square"/><circle cx="50" cy="50" r="6.5" fill="#0a0a0a"/><circle cx="50" cy="50" r="3.5" fill="#6fbdaa"/></svg>
-    <b>NO'J STUDIO</b>
-  </a>
-  <div class="cliente" id="navCliente"></div>
-</nav>
+  <header class="top">
+    <div class="handle"><span id="usuario">evento</span>
+    </div>
+    <div class="top-r">
+      <button id="btnShareTop" aria-label="Compartir galería"><svg class="i" viewBox="0 0 24 24"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z"/></svg></button>
+      <a id="lnkNoj" target="_blank" rel="noopener" aria-label="No'j Studio">
+        <svg class="noj-mark" viewBox="0 0 100 100"><g stroke="#f5f5f5" stroke-width="7" stroke-linecap="square" fill="none"><polyline points="8,28 8,8 28,8"/><polyline points="72,8 92,8 92,28"/><polyline points="92,72 92,92 72,92"/><polyline points="28,92 8,92 8,72"/><line x1="20" y1="20" x2="80" y2="80"/><line x1="80" y1="20" x2="20" y2="80"/></g><circle cx="50" cy="50" r="7" fill="#000"/><circle cx="50" cy="50" r="4" style="fill:var(--accent)"/></svg>
+      </a>
+    </div>
+  </header>
 
-<header class="hero" id="inicio">
-  <div class="marcas-agua"><svg viewBox="0 0 100 100"><g stroke="#fff" stroke-width="5" stroke-linecap="square" fill="none"><polyline points="8,28 8,8 28,8"/><polyline points="72,8 92,8 92,28"/><polyline points="92,72 92,92 72,92"/><polyline points="28,92 8,92 8,72"/></g><line x1="20" y1="20" x2="80" y2="80" stroke="#fff" stroke-width="5"/><line x1="80" y1="20" x2="20" y2="80" stroke="#fff" stroke-width="5"/></svg></div>
-  <div class="eyebrow" id="eyebrow">Galería del evento</div>
-  <h1 id="titulo">Alfombra Roja</h1>
-  <div class="meta" id="meta"></div>
-
-  <div id="bloqueBuscar">
-    <p class="sub">Tómate una selfie y te mostramos todas las fotos donde apareces, listas para guardar.</p>
-    <div class="acciones">
-      <button class="btn btn-p" id="btnSelfie">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        Tomarme una selfie
+  <section class="perfil">
+    <div class="fila">
+      <button class="avatar" id="avatar" aria-label="Tomarme una selfie">
+        <span class="av-in" id="avIn"></span>
+        <span class="av-plus"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
       </button>
-      <button class="btn btn-s" id="btnSubir">Subir una foto mía</button>
+      <div class="stats">
+        <span><b id="sFotos">0</b>fotos</span>
+        <span><b id="sRostros">—</b>rostros</span>
+        <span><b id="sTuyas">—</b>tuyas</span>
+      </div>
     </div>
-    <input type="file" id="inSelfie" accept="image/*" capture="user" hidden>
-    <input type="file" id="inSubir" accept="image/*" hidden>
-    <div class="privado">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-      Tu selfie se analiza en tu teléfono. No se sube ni se guarda.
+    <div class="bio">
+      <b id="bioNombre">Evento</b><br>
+      <span class="cat" id="bioFecha"></span><br>
+      <span id="bioTxt">Tómate una selfie y encuentra todas las fotos donde sales.</span><br>
+      📸 <a id="bioIg" target="_blank" rel="noopener">@nojstudiomx</a>
     </div>
-    <a class="ver-todas" href="#todas" id="lnkTodas">Ver todas las fotos</a>
-  </div>
-</header>
+    <div class="botones">
+      <button class="b pri" id="btnSelfie"><svg class="i" viewBox="0 0 24 24"><path d="M3 8V6a2 2 0 012-2h2M17 4h2a2 2 0 012 2v2M21 16v2a2 2 0 01-2 2h-2M7 20H5a2 2 0 01-2-2v-2"/><circle cx="12" cy="11" r="3"/><path d="M7.5 17c1-1.8 2.7-2.7 4.5-2.7s3.5.9 4.5 2.7"/></svg>Encontrarme</button>
+      <button class="b" id="btnCompartir">Compartir galería</button>
+    </div>
+  </section>
 
-<div class="espera" id="espera" hidden>
-  <div class="bebas">Tus fotos vienen en camino</div>
-  <p id="esperaTxt">Estamos editando las fotos del evento. Vuelve a este mismo link a partir del día indicado: aquí podrás encontrarte con una selfie.</p>
+  <div class="dest">
+    <button class="d" id="dSelfie"><span class="c on"><span><svg class="i" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></span></span>Selfie</button>
+    <button class="d" id="dSubir"><span class="c"><span><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span></span>Subir foto</button>
+    <a class="d" id="dIg" target="_blank" rel="noopener"><span class="c"><span><svg class="i" viewBox="0 0 100 100" style="width:24px;height:24px"><g stroke="#f5f5f5" stroke-width="7" stroke-linecap="square" fill="none"><polyline points="8,28 8,8 28,8"/><polyline points="72,8 92,8 92,28"/><polyline points="92,72 92,92 72,92"/><polyline points="28,92 8,92 8,72"/><line x1="20" y1="20" x2="80" y2="80"/><line x1="80" y1="20" x2="20" y2="80"/></g></svg></span></span>No'j Studio</a>
+    <a class="d" id="dWa" target="_blank" rel="noopener"><span class="c"><span><svg class="i" viewBox="0 0 24 24"><path d="M20.5 12a8.5 8.5 0 01-12.6 7.4L3.5 20.5l1.2-4.2A8.5 8.5 0 1120.5 12z"/></svg></span></span>Cotiza</a>
+    <button class="d" id="dPriv"><span class="c"><span><svg class="i" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span></span>Privacidad</button>
+  </div>
+  <input type="file" id="inSelfie" accept="image/*" capture="user" hidden>
+  <input type="file" id="inSubir" accept="image/*" hidden>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab on" id="tabTodas" role="tab" aria-label="Todas las fotos"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></button>
+    <button class="tab" id="tabTu" role="tab" aria-label="Tus fotos"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M6 19c1.5-3 4-4 6-4s4.5 1 6 4"/></svg><span class="badge" id="badge" hidden></span></button>
+  </nav>
+
+  <main>
+    <section id="pTodas">
+      <div class="grid" id="gridTodas"></div>
+      <div id="mas"></div>
+      <div class="vacio" id="espera" hidden>
+        <div class="circ"><svg class="i" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <h3>Las fotos vienen en camino</h3>
+        <p id="esperaTxt">Estamos editando las fotos del evento. Vuelve a este mismo link y encuéntrate con una selfie.</p>
+      </div>
+    </section>
+
+    <section id="pTu" hidden>
+      <div class="vacio" id="tuIntro">
+        <div class="circ"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M6 19c1.5-3 4-4 6-4s4.5 1 6 4"/></svg></div>
+        <h3>Fotos tuyas</h3>
+        <p>Tómate una selfie y aquí aparecen todas las fotos donde sales, listas para guardar.</p>
+        <button class="b pri" id="btnSelfie2">Tomarme una selfie</button>
+      </div>
+      <div id="tuRes" hidden>
+        <div class="res-head"><b id="resTit"></b><button id="btnOtra">Otra selfie</button></div>
+        <div class="grid" id="gridRes"></div>
+        <div class="vacio" id="resVacio" hidden style="padding-top:20px">
+          <h3>No te encontramos</h3>
+          <ul class="tips"><li>De frente y con buena luz</li><li>Sin lentes de sol</li><li>Solo tu cara en la foto</li></ul>
+          <button class="b pri" id="btnSelfie3">Intentar otra vez</button>
+        </div>
+        <div id="bloquePos" hidden>
+          <div class="sub-head">¿También eres tú?<span>Coincidencias menos seguras: revísalas.</span></div>
+          <div class="grid" id="gridPos"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pie">
+      <a class="noj" id="pieNoj" target="_blank" rel="noopener"><svg viewBox="0 0 100 100"><g stroke="#a8a8a8" stroke-width="7" stroke-linecap="square" fill="none"><polyline points="8,28 8,8 28,8"/><polyline points="72,8 92,8 92,28"/><polyline points="92,72 92,92 72,92"/><polyline points="28,92 8,92 8,72"/><line x1="20" y1="20" x2="80" y2="80"/><line x1="80" y1="20" x2="20" y2="80"/></g></svg>Fotografía por No'j Studio</a>
+      <span>Fotos para uso personal · Tu selfie no se sube ni se guarda</span>
+    </footer>
+  </main>
+
+  <div class="barra" id="barra" hidden><button class="b pri" id="btnGuardarTodas"></button></div>
 </div>
 
-<div class="estado" id="estado">
-  <div class="scan"><img id="miniSelfie" alt=""></div>
-  <p id="estadoTxt">Cargando…</p>
+<div class="scan" id="scan" hidden>
+  <div class="ring"><img id="scanImg" alt=""><div class="linea"></div></div>
+  <b id="scanTxt">Analizando…</b>
+  <span id="scanSub">Tu selfie se procesa en tu teléfono. No se sube a ningún lado.</span>
 </div>
 
-<section class="bloque" id="resultados" hidden>
-  <div class="cab"><div><small id="resSub">Resultado</small><h2 id="resTit">Tus fotos</h2></div></div>
-  <div class="grid" id="gridRes"></div>
-  <div class="vacio" id="resVacio" hidden>
-    <p>No encontramos coincidencias claras. Prueba otra selfie:</p>
-    <ul><li>De frente y con buena luz</li><li>Sin lentes de sol ni cubrebocas</li><li>Solo tu cara, sin otras personas</li></ul>
+<div class="feed" id="feed" hidden>
+  <div class="feed-top">
+    <button id="feedBack" aria-label="Volver"><svg class="i" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="t"><small id="feedUser"></small><b id="feedTit">Publicaciones</b></div>
+    <span></span>
   </div>
-  <div class="pie-res">
-    <button class="btn btn-p" id="btnTodasMias" hidden>Guardar todas mis fotos</button>
-    <button class="btn btn-s" id="btnOtra">Probar con otra selfie</button>
-  </div>
-  <div id="bloquePosibles" hidden style="margin-top:2.6rem">
-    <div class="cab"><div><small>Revisa estas también</small><h2>¿También eres tú?</h2></div></div>
-    <div class="grid" id="gridPos"></div>
-  </div>
-</section>
-
-<section class="bloque" id="todas" hidden>
-  <div class="cab"><div><small id="todasSub">Galería completa</small><h2>Todas las fotos</h2></div></div>
-  <div class="grid" id="gridTodas"></div>
-  <button class="btn btn-s" id="mas" hidden>Cargar más</button>
-</section>
-
-<footer>
-  <svg width="44" height="44" viewBox="0 0 100 100" aria-hidden="true"><g style="stroke:var(--accent)" stroke-width="6" stroke-linecap="square" fill="none"><polyline points="8,28 8,8 28,8"/><polyline points="72,8 92,8 92,28"/><polyline points="92,72 92,92 72,92"/><polyline points="28,92 8,92 8,72"/></g><line x1="20" y1="20" x2="80" y2="80" style="stroke:var(--accent)" stroke-width="6" stroke-linecap="square"/><line x1="80" y1="20" x2="20" y2="80" style="stroke:var(--accent)" stroke-width="6" stroke-linecap="square"/><circle cx="50" cy="50" r="6.5" fill="#0a0a0a"/><circle cx="50" cy="50" r="3.5" fill="#f4f2ed"/></svg>
-  <div class="bebas">Fotografía por No'j Studio</div>
-  <p>Foto, video, drone y experiencias para marcas y eventos en CDMX. Si compartes tu foto, etiquétanos: nos encanta verlas.</p>
-  <div class="acciones">
-    <a class="btn btn-p" id="lnkIg" target="_blank" rel="noopener">Seguir en Instagram</a>
-    <a class="btn btn-s" id="lnkWa" target="_blank" rel="noopener">Cotizar mi evento</a>
-  </div>
-  <div class="legal">© No'j Studio · Las fotos son para uso personal. Para uso comercial, contáctanos.</div>
-</footer>
-
-<div class="lb" id="lb" role="dialog" aria-modal="true">
-  <div class="lb-top"><span id="lbCont"></span><button class="lb-x" id="lbX" aria-label="Cerrar">×</button></div>
-  <div class="lb-img" id="lbArea">
-    <img id="lbImg" alt="">
-    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
-    <button class="lb-nav lb-next" id="lbNext" aria-label="Siguiente">›</button>
-  </div>
-  <div class="lb-bot">
-    <button class="btn btn-p" id="lbGuardar">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Guardar foto
-    </button>
-  </div>
+  <div class="feed-list" id="feedList"></div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -202,157 +266,202 @@ footer .legal{color:#555;font-size:.7rem;margin-top:2rem;letter-spacing:.06em}
 <script>
 const C = window.GALERIA || {};
 const $ = id => document.getElementById(id);
-let FOTOS = [], ROSTROS = null, lista = [], pos = 0;
-const blobs = new Map();
+const IG = C.instagram || 'nojstudiomx';
+const USR = C.usuario || (C.cliente || 'evento').toLowerCase().normalize('NFD').replace(/[^a-z0-9]/g, '');
+let FOTOS = [], ROSTROS = null, MIAS = [], POS = [];
+const blobs = new Map(), likes = new Set();
 const esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.userAgent));
 
 /* ---------- Marca ---------- */
-if (C.acento) { document.documentElement.style.setProperty('--accent', C.acento); }
-document.title = `${C.evento || 'Galería'} · Fotos · No'j Studio`;
-$('titulo').textContent = C.evento || 'Galería';
-$('eyebrow').textContent = C.cliente ? `${C.cliente} × No'j Studio` : "Galería · No'j Studio";
-$('meta').textContent = [C.fecha, C.lugar, C.hashtag].filter(Boolean).join('  ·  ');
-$('navCliente').innerHTML = C.logoCliente ? `<img src="${C.logoCliente}" alt="${C.cliente || ''}">` : `<span>${C.cliente || ''}</span>`;
-$('lnkSitio').href = C.sitio || '#';
-$('lnkIg').href = `https://instagram.com/${C.instagram || 'nojstudiomx'}`;
-$('lnkIg').textContent = `Seguir a @${C.instagram || 'nojstudiomx'}`;
-$('lnkWa').href = `https://wa.me/${C.whatsapp || ''}?text=${encodeURIComponent(`Hola No'j, vi la galería de ${C.evento || 'un evento'} y quiero cotizar cobertura para mi evento.`)}`;
-if (C.disponibleDesde) $('esperaTxt').textContent = `Estamos editando las fotos del evento. Vuelve a este mismo link a partir del ${C.disponibleDesde}: aquí podrás encontrarte con una selfie.`;
+const root = document.documentElement.style;
+if (C.acento) root.setProperty('--accent', C.acento);
+root.setProperty('--accent2', C.acento2 || C.acento || '#a3262a');
+document.title = `${C.cliente ? C.cliente + ' · ' : ''}${C.evento || 'Fotos'} · Fotos`;
+$('usuario').textContent = USR;
+$('feedUser').textContent = USR;
+const avatarHTML = C.logoCliente ? `<img src="${C.logoCliente}" alt="">` : `<span class="av-txt">${C.avatarTexto || (C.cliente || 'E').slice(0, 2).toUpperCase()}</span>`;
+$('avIn').innerHTML = avatarHTML;
+$('bioNombre').textContent = [C.cliente, C.evento].filter(Boolean).join(' · ');
+$('bioFecha').textContent = [C.fecha, C.lugar].filter(Boolean).join(' · ');
+if (C.bio) $('bioTxt').textContent = C.bio;
+$('bioIg').textContent = '@' + IG; $('bioIg').href = `https://instagram.com/${IG}`;
+$('dIg').href = $('pieNoj').href = `https://instagram.com/${IG}`;
+$('lnkNoj').href = C.sitio || `https://instagram.com/${IG}`;
+$('dWa').href = `https://wa.me/${C.whatsapp || ''}?text=${encodeURIComponent(`Hola No'j, vi la galería de ${C.evento || 'un evento'} y quiero cotizar cobertura para mi evento.`)}`;
+if (C.disponibleDesde) $('esperaTxt').textContent = `Estamos editando las fotos. Vuelve a este mismo link a partir del ${C.disponibleDesde} y encuéntrate con una selfie.`;
+const miniHTML = () => `<span class="mini"><span>${C.logoCliente ? `<img src="${C.logoCliente}" alt="">` : (C.avatarTexto || '')}</span></span>`;
 
 const url = f => 'fotos/web/' + f.f, mini = f => 'fotos/thumb/' + f.f;
-function toast(t, ms = 3800) { const e = $('toast'); e.textContent = t; e.classList.add('on'); clearTimeout(e._t); e._t = setTimeout(() => e.classList.remove('on'), ms); }
+function toast(t, ms = 3600) { const e = $('toast'); e.textContent = t; e.classList.add('on'); clearTimeout(e._t); e._t = setTimeout(() => e.classList.remove('on'), ms); }
 
 /* ---------- Datos ---------- */
 fetch('data/fotos.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : { fotos: [] }).catch(() => ({ fotos: [] })).then(d => {
   FOTOS = (d.fotos || []).map((f, i) => ({ ...f, i }));
   FOTOS.sort((a, b) => a.f.localeCompare(b.f, undefined, { numeric: true }));
-  if (!FOTOS.length) { $('bloqueBuscar').hidden = true; $('espera').hidden = false; return; }
-  $('todasSub').textContent = `${FOTOS.length} fotos`;
-  $('lnkTodas').textContent = `Ver todas las fotos (${FOTOS.length})`;
-  $('todas').hidden = false; pintarTodas();
-  // precarga en segundo plano del índice y modelos para que la búsqueda sea inmediata
-  const pre = () => { cargarRostros(); window.Rostros && Rostros.cargar(['tinyFaceDetector', 'faceLandmark68Net', 'faceRecognitionNet']).catch(() => {}); };
-  window.requestIdleCallback ? requestIdleCallback(pre, { timeout: 3000 }) : setTimeout(pre, 1500);
+  $('sFotos').textContent = FOTOS.length;
+  if (!FOTOS.length) { $('espera').hidden = false; ['btnSelfie', 'dSelfie', 'dSubir', 'avatar', 'tabTu'].forEach(id => $(id).disabled = true); $('btnSelfie').style.opacity = .4; return; }
+  pintarTodas();
+  const pre = () => { cargarRostros().then(r => $('sRostros').textContent = r.length).catch(() => {}); window.Rostros && Rostros.cargar(['tinyFaceDetector', 'faceLandmark68Net', 'faceRecognitionNet']).catch(() => {}); };
+  window.requestIdleCallback ? requestIdleCallback(pre, { timeout: 2500 }) : setTimeout(pre, 1200);
 });
 let _rost;
 function cargarRostros() {
-  return _rost ||= fetch('data/rostros.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
-    ROSTROS = d.rostros.map(([i, b]) => [i, Rostros.decodificar(b, d.escala)]); return ROSTROS;
-  });
+  return _rost ||= new Promise(r => { const w = () => window.Rostros ? r() : setTimeout(w, 80); w(); })
+    .then(() => fetch('data/rostros.json', { cache: 'no-cache' })).then(r => r.json())
+    .then(d => (ROSTROS = d.rostros.map(([i, b]) => [i, Rostros.decodificar(b, d.escala)])));
 }
 
 /* ---------- Grids ---------- */
-function celda(f, coleccion, k, ansioso) {
-  const b = document.createElement('button');
-  b.setAttribute('aria-label', 'Ver foto');
-  const im = new Image(); im.loading = ansioso ? 'eager' : 'lazy'; im.decoding = 'async'; im.alt = '';
+function celda(f, col, k, ansioso) {
+  const b = document.createElement('button'); b.className = 'g'; b.setAttribute('aria-label', 'Ver foto ' + (k + 1));
+  const im = new Image(); im.alt = ''; im.decoding = 'async'; im.loading = ansioso ? 'eager' : 'lazy';
   im.onload = () => im.classList.add('ok'); im.src = mini(f);
-  b.append(im); b.onclick = () => abrir(coleccion, k); return b;
+  b.append(im); b.onclick = () => abrirFeed(col, k); return b;
 }
-let pintadas = 0; const LOTE = 40;
+let pintadas = 0; const LOTE = 45;
 function pintarTodas() {
   const g = $('gridTodas'), hasta = Math.min(FOTOS.length, pintadas + LOTE);
   for (let k = pintadas; k < hasta; k++) g.append(celda(FOTOS[k], FOTOS, k));
-  pintadas = hasta; $('mas').hidden = pintadas >= FOTOS.length;
+  pintadas = hasta;
 }
-$('mas').onclick = pintarTodas;
-new IntersectionObserver(e => { if (e[0].isIntersecting && pintadas && pintadas < FOTOS.length) pintarTodas(); }, { rootMargin: '800px' }).observe($('mas'));
+new IntersectionObserver(e => { if (e[0].isIntersecting && pintadas && pintadas < FOTOS.length) pintarTodas(); }, { rootMargin: '1200px' }).observe($('mas'));
+
+/* ---------- Tabs ---------- */
+function verTab(t) {
+  const tu = t === 'tu';
+  $('tabTodas').classList.toggle('on', !tu); $('tabTu').classList.toggle('on', tu);
+  $('pTodas').hidden = tu; $('pTu').hidden = !tu;
+  $('barra').hidden = !(tu && MIAS.length > 1);
+}
+$('tabTodas').onclick = () => verTab('todas');
+$('tabTu').onclick = () => verTab('tu');
 
 /* ---------- Selfie ---------- */
-$('btnSelfie').onclick = () => $('inSelfie').click();
-$('btnSubir').onclick = () => $('inSubir').click();
-$('btnOtra').onclick = () => $('inSelfie').click();
+const selfie = () => $('inSelfie').click();
+['btnSelfie', 'btnSelfie2', 'btnSelfie3', 'btnOtra', 'avatar', 'dSelfie'].forEach(id => $(id).onclick = selfie);
+$('dSubir').onclick = () => $('inSubir').click();
+$('dPriv').onclick = () => toast('Tu selfie se analiza en tu teléfono. No se sube ni se guarda en ningún lado.', 5000);
 $('inSelfie').onchange = e => buscar(e.target.files[0], e.target);
 $('inSubir').onchange = e => buscar(e.target.files[0], e.target);
 
 async function buscar(archivo, input) {
-  if (!archivo) return;
-  input.value = '';
-  $('resultados').hidden = true; $('estado').classList.add('on');
-  $('miniSelfie').src = URL.createObjectURL(archivo);
-  const txt = t => $('estadoTxt').textContent = t;
-  $('estado').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  if (!archivo) return; input.value = '';
+  const sc = $('scan'); sc.hidden = false; document.body.style.overflow = 'hidden';
+  $('scanImg').src = URL.createObjectURL(archivo);
+  const txt = t => $('scanTxt').textContent = t;
+  const fin = () => { sc.hidden = true; document.body.style.overflow = ''; };
   try {
     while (!window.Rostros || !window.faceapi) await new Promise(r => setTimeout(r, 100));
     const canvas = await Rostros.aCanvas(archivo, 1024);
     const [descs] = await Promise.all([Rostros.rostroDeSelfie(canvas, txt), cargarRostros()]);
-    if (!descs) { $('estado').classList.remove('on'); toast('No detectamos un rostro. Intenta de frente y con buena luz.', 5000); return; }
+    if (!descs) { fin(); toast('No vimos tu cara. Intenta de frente y con buena luz.', 4500); return; }
     txt(`Buscando entre ${FOTOS.length} fotos…`);
+    await new Promise(r => setTimeout(r, 450));
     const mejor = new Map();
     for (const [i, d] of ROSTROS) { const dist = Math.min(...descs.map(q => Rostros.distancia(q, d))); if (!mejor.has(i) || dist < mejor.get(i)) mejor.set(i, dist); }
     const porIdx = new Map(FOTOS.map(f => [f.i, f]));
     const orden = [...mejor].filter(([i]) => porIdx.has(i)).sort((a, b) => a[1] - b[1]);
-    const mias = orden.filter(([, d]) => d < (C.umbral || 0.45)).map(([i]) => porIdx.get(i));
-    let posibles = orden.filter(([, d]) => d >= (C.umbral || 0.45) && d < (C.umbralPosible || 0.53)).slice(0, 24);
-    // si no hubo coincidencias claras, sugerimos las más parecidas (pose difícil, ojos cerrados, etc.)
-    if (!mias.length && !posibles.length) posibles = orden.filter(([, d]) => d < 0.62).slice(0, 8);
-    posibles = posibles.map(([i]) => porIdx.get(i));
-    mostrar(mias, posibles);
-  } catch (e) {
-    console.error(e); $('estado').classList.remove('on');
-    toast('Algo falló al analizar la foto. Intenta de nuevo.', 5000);
-  }
+    const U = C.umbral || 0.45, UP = C.umbralPosible || 0.53;
+    const mias = orden.filter(([, d]) => d < U).map(([i]) => porIdx.get(i));
+    let pos = orden.filter(([, d]) => d >= U && d < UP).slice(0, 24);
+    if (!mias.length && !pos.length) pos = orden.filter(([, d]) => d < 0.62).slice(0, 9);
+    fin(); mostrar(mias, pos.map(([i]) => porIdx.get(i)));
+  } catch (e) { console.error(e); fin(); toast('Algo falló al analizar la foto. Intenta de nuevo.', 4500); }
 }
-let MIAS = [], POS = [];
 function mostrar(mias, posibles) {
   MIAS = mias; POS = posibles;
-  $('estado').classList.remove('on'); $('resultados').hidden = false;
-  $('resTit').textContent = mias.length ? (mias.length === 1 ? 'Encontramos 1 foto tuya' : `Encontramos ${mias.length} fotos tuyas`) : 'Sin coincidencias claras';
-  $('resSub').textContent = C.evento || 'Resultado';
+  $('tuIntro').hidden = true; $('tuRes').hidden = false;
+  $('resTit').textContent = mias.length ? (mias.length === 1 ? '1 foto tuya' : `${mias.length} fotos tuyas`) : '';
+  $('resTit').parentElement.hidden = !mias.length;
+  $('sTuyas').textContent = mias.length;
+  const bd = $('badge'); bd.hidden = !mias.length; bd.textContent = mias.length;
   const g = $('gridRes'); g.innerHTML = ''; mias.forEach((f, k) => g.append(celda(f, MIAS, k, true)));
   const gp = $('gridPos'); gp.innerHTML = ''; posibles.forEach((f, k) => gp.append(celda(f, POS, k, true)));
-  $('bloquePosibles').hidden = !posibles.length;
+  $('bloquePos').hidden = !posibles.length;
   $('resVacio').hidden = !!mias.length;
-  $('btnTodasMias').hidden = mias.length < 2;
-  $('btnTodasMias').textContent = `Guardar mis ${mias.length} fotos`;
+  $('btnGuardarTodas').textContent = `Guardar mis ${mias.length} fotos`;
   mias.slice(0, 12).forEach(precargar);
-  $('resultados').scrollIntoView({ behavior: 'smooth' });
+  verTab('tu');
+  window.scrollTo({ top: $('pTu').offsetTop - 110, behavior: 'smooth' });
+  if (mias.length) toast(mias.length === 1 ? '¡Te encontramos en 1 foto!' : `¡Te encontramos en ${mias.length} fotos!`, 2600);
 }
 
 /* ---------- Guardar / compartir ---------- */
-function nombre(f) { return `${C.prefijoArchivo || 'noj'}-${f.f}`; }
+const nombre = f => `${C.prefijoArchivo || 'noj'}-${f.f}`;
 function precargar(f) {
   if (!blobs.has(f.f)) blobs.set(f.f, fetch(url(f)).then(r => r.blob()).then(b => new File([b], nombre(f), { type: 'image/jpeg' })).catch(e => { blobs.delete(f.f); throw e; }));
   return blobs.get(f.f);
 }
-async function guardar(fs) {
+async function guardar(fs, texto) {
   const archivos = await Promise.all(fs.map(precargar));
   if (esMovil && navigator.canShare && navigator.canShare({ files: archivos })) {
-    try {
-      await navigator.share({ files: archivos });
-      gracias(); return;
-    } catch (e) {
-      if (e.name === 'AbortError') return;
-      if (e.name === 'NotAllowedError') { toast('Listo para guardar: toca el botón otra vez.'); return; }
-    }
+    try { await navigator.share(texto ? { files: archivos, text: texto } : { files: archivos }); gracias(); return; }
+    catch (e) { if (e.name === 'AbortError') return; if (e.name === 'NotAllowedError') { toast('Listo: toca otra vez para guardar.'); return; } }
   }
   for (const a of archivos) {
     const l = document.createElement('a'); l.href = URL.createObjectURL(a); l.download = a.name;
-    document.body.append(l); l.click(); l.remove();
-    await new Promise(r => setTimeout(r, 350));
+    document.body.append(l); l.click(); l.remove(); await new Promise(r => setTimeout(r, 350));
   }
   gracias();
 }
-function gracias() { toast(`¡Listo! Si la subes, etiqueta a @${C.instagram || 'nojstudiomx'} ✦`, 4500); }
-$('btnTodasMias').onclick = () => guardar(MIAS);
-$('lbGuardar').onclick = () => guardar([lista[pos]]);
-
-/* ---------- Lightbox ---------- */
-function abrir(col, k) { lista = col; pos = k; $('lb').classList.add('on'); document.body.style.overflow = 'hidden'; ver(); history.pushState({ lb: 1 }, ''); }
-function cerrar(desdeHist) { if (!$('lb').classList.contains('on')) return; $('lb').classList.remove('on'); document.body.style.overflow = ''; if (!desdeHist) history.back(); }
-function ver() {
-  const f = lista[pos]; $('lbImg').src = mini(f);
-  const full = new Image(); full.onload = () => { if (lista[pos] === f) $('lbImg').src = full.src; }; full.src = url(f);
-  $('lbCont').textContent = `${pos + 1} / ${lista.length}`;
-  precargar(f); [pos + 1, pos - 1].forEach(k => { if (lista[k]) new Image().src = mini(lista[k]); });
+const gracias = () => toast(`Si la subes, etiqueta a @${IG} ✦`, 3800);
+$('btnGuardarTodas').onclick = () => guardar(MIAS);
+async function compartirGaleria() {
+  const d = { title: document.title, text: `Fotos de ${C.evento || 'el evento'} · encuéntrate con una selfie`, url: location.href.split('#')[0] };
+  if (navigator.share) { try { await navigator.share(d); } catch (e) {} }
+  else { try { await navigator.clipboard.writeText(d.url); toast('Link copiado'); } catch (e) { toast(d.url, 5000); } }
 }
-function mover(d) { const n = pos + d; if (n >= 0 && n < lista.length) { pos = n; ver(); } }
-$('lbX').onclick = () => cerrar(); $('lbPrev').onclick = () => mover(-1); $('lbNext').onclick = () => mover(1);
-window.addEventListener('popstate', () => cerrar(true));
-document.addEventListener('keydown', e => { if (!$('lb').classList.contains('on')) return; if (e.key === 'Escape') cerrar(); if (e.key === 'ArrowRight') mover(1); if (e.key === 'ArrowLeft') mover(-1); });
-let x0 = null;
-$('lbArea').addEventListener('touchstart', e => x0 = e.touches[0].clientX, { passive: true });
-$('lbArea').addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) mover(dx < 0 ? 1 : -1); x0 = null; });
+$('btnCompartir').onclick = $('btnShareTop').onclick = compartirGaleria;
+
+/* ---------- Feed tipo publicación ---------- */
+const ICO = {
+  heart: '<svg class="i" viewBox="0 0 24 24"><path d="M12 20.5s-7.4-4.5-9.3-9C1.2 7.9 3.4 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.5 0 5.7 3.4 4.2 7-1.9 4.5-9.3 9-9.3 9z"/></svg>',
+  send: '<svg class="i" viewBox="0 0 24 24"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z"/></svg>',
+  down: '<svg class="i" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>'
+};
+let feedCol = null;
+function post(f, k) {
+  const el = document.createElement('article'); el.className = 'post'; el.dataset.k = k;
+  const r = (f.h / f.w) || 1.33;
+  el.innerHTML = `
+    <div class="post-h">${miniHTML()}<div class="n"><b>${USR}</b><span>${C.evento || ''}</span></div></div>
+    <div class="post-img" style="aspect-ratio:${f.w}/${f.h};background-image:url('${mini(f)}')"><img loading="lazy" decoding="async" alt="" src="${url(f)}"><div class="pop">${ICO.heart}</div></div>
+    <div class="acc">
+      <button class="corazon ${likes.has(f.f) ? 'on' : ''}" aria-label="Me gusta">${ICO.heart}</button>
+      <button class="enviar" aria-label="Compartir">${ICO.send}</button>
+      <span class="esp"></span>
+      <button class="guardar" aria-label="Guardar foto">${ICO.down}Guardar</button>
+    </div>
+    <div class="cap"><b>${USR}</b> ${C.evento || ''}${C.hashtag ? ' ' + C.hashtag : ''} · 📸 <a href="https://instagram.com/${IG}" target="_blank" rel="noopener">@${IG}</a></div>
+    <div class="fecha">${C.fecha || ''}</div>`;
+  const like = el.querySelector('.corazon');
+  const toggle = (forzar) => { const on = forzar ?? !likes.has(f.f); on ? likes.add(f.f) : likes.delete(f.f); like.classList.toggle('on', on); };
+  like.onclick = () => toggle();
+  let ultimo = 0;
+  el.querySelector('.post-img').addEventListener('click', () => {
+    const t = Date.now(); if (t - ultimo < 320) { toggle(true); const p = el.querySelector('.pop'); p.classList.remove('on'); void p.offsetWidth; p.classList.add('on'); } ultimo = t;
+  });
+  el.querySelector('.guardar').onclick = () => guardar([f]);
+  el.querySelector('.enviar').onclick = () => guardar([f], `Mi foto en ${C.evento || 'el evento'} 📸 @${IG}`);
+  return el;
+}
+function abrirFeed(col, k) {
+  const fd = $('feed'), lista = $('feedList');
+  $('feedTit').textContent = col === FOTOS ? 'Publicaciones' : col === MIAS ? 'Tus fotos' : '¿También eres tú?';
+  if (feedCol !== col) {
+    lista.innerHTML = ''; feedCol = col;
+    const frag = document.createDocumentFragment(); col.forEach((f, i) => frag.append(post(f, i))); lista.append(frag);
+  }
+  fd.hidden = false; document.body.style.overflow = 'hidden';
+  const objetivo = lista.children[k];
+  fd.scrollTop = 0; requestAnimationFrame(() => { fd.scrollTop = objetivo.offsetTop - $('feed').querySelector('.feed-top').offsetHeight; });
+  precargar(col[k]);
+  history.pushState({ feed: 1 }, '');
+}
+function cerrarFeed(desdeHist) { if ($('feed').hidden) return; $('feed').hidden = true; document.body.style.overflow = ''; if (!desdeHist) history.back(); }
+$('feedBack').onclick = () => cerrarFeed();
+window.addEventListener('popstate', () => cerrarFeed(true));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarFeed(); });
 </script>
 </body>
 </html>
