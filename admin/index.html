@@ -151,7 +151,9 @@ async function escribir(dir, ruta, datos) {
 $('btnCarpeta').onclick = async () => {
   if (!hayFS) { $('carpetaInfo').textContent = 'Se usará descarga .zip al final.'; actualizar(); return; }
   try {
+    $('carpetaInfo').textContent = 'Abriendo selector…';
     carpeta = await window.showDirectoryPicker({ id: 'galeria-evento', mode: 'readwrite' });
+    if (carpeta.requestPermission && (await carpeta.requestPermission({ mode: 'readwrite' })) !== 'granted') throw new DOMException('Sin permiso de escritura en la carpeta', 'NotAllowedError');
     const p = await leerJSON(carpeta, 'data/fotos.json');
     const r = await leerJSON(carpeta, 'data/rostros.json');
     existentes = { fotos: p?.fotos || [], rostros: r?.rostros || [], escala: r?.escala || Rostros.ESCALA };
@@ -163,7 +165,12 @@ $('btnCarpeta').onclick = async () => {
     if (cfg?.cliente && !$('qrCliente').value) $('qrCliente').value = cfg.cliente;
     if (cfg?.acento) $('qrAcento').value = cfg.acento;
     if (cfg?.disponibleDesde) $('qrDisp').value = 'Disponibles a partir del ' + cfg.disponibleDesde;
-  } catch (e) { if (e.name !== 'AbortError') log('Error carpeta: ' + e.message); }
+  } catch (e) {
+    const msg = e.name === 'AbortError' ? 'No se eligió carpeta (cancelado o sin permiso). Intenta de nuevo y dale "Permitir"/"Editar archivos".'
+              : `Error: ${e.name} — ${e.message}`;
+    $('carpetaInfo').innerHTML = `<span style="color:#e08a7a">${msg}</span>`;
+    log('Carpeta: ' + e.name + ' ' + e.message);
+  }
   actualizar();
 };
 async function leerConfig() {
