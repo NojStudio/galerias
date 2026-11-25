@@ -59,6 +59,7 @@ input[type=text],input[type=number]{background:#0d0d0d;border:1px solid rgba(255
     <p>Elige la carpeta del evento dentro de tu copia del repo <b>galerias</b> (por ejemplo <code>galerias/casa1916-casino</code>). Si ya tiene fotos indexadas, las nuevas se agregan sin duplicar.</p>
     <div class="row">
       <button id="btnCarpeta">Elegir carpeta</button>
+      <button id="btnZip" class="ghost">Sin carpeta: descargar .zip al final</button>
       <span id="carpetaInfo" class="muted"></span>
     </div>
     <div id="sinFS" class="warn" hidden>Este navegador no permite escribir carpetas. Usa Chrome o Edge en computadora; si no, al final se descargará un .zip con todo para descomprimir dentro de la carpeta del evento.</div>
@@ -125,6 +126,7 @@ const hayFS = 'showDirectoryPicker' in window;
 if (!hayFS) $('sinFS').hidden = false;
 
 let carpeta = null;          // FileSystemDirectoryHandle del evento
+let modoZip = !hayFS;
 let existentes = { fotos: [], rostros: [], escala: Rostros.ESCALA };
 let archivos = [];
 let pausado = false, corriendo = false;
@@ -148,7 +150,13 @@ async function escribir(dir, ruta, datos) {
   const w = await fh.createWritable(); await w.write(datos); await w.close();
 }
 
+$('btnZip').onclick = () => {
+  modoZip = true; carpeta = null; existentes = { fotos: [], rostros: [], escala: Rostros.ESCALA };
+  $('carpetaInfo').innerHTML = '<span class="ok">✓ Modo .zip</span> · al terminar se descarga un .zip con las carpetas <b>data</b> y <b>fotos</b>';
+  actualizar();
+};
 $('btnCarpeta').onclick = async () => {
+  modoZip = !hayFS;
   if (!hayFS) { $('carpetaInfo').textContent = 'Se usará descarga .zip al final.'; actualizar(); return; }
   try {
     $('carpetaInfo').textContent = 'Abriendo selector…';
@@ -166,7 +174,7 @@ $('btnCarpeta').onclick = async () => {
     if (cfg?.acento) $('qrAcento').value = cfg.acento;
     if (cfg?.disponibleDesde) $('qrDisp').value = 'Disponibles a partir del ' + cfg.disponibleDesde;
   } catch (e) {
-    const msg = e.name === 'AbortError' ? 'No se eligió carpeta (cancelado o sin permiso). Intenta de nuevo y dale "Permitir"/"Editar archivos".'
+    const msg = e.name === 'AbortError' ? 'No se pudo elegir la carpeta en este navegador. Usa el botón “Sin carpeta: descargar .zip al final”.'
               : `Error: ${e.name} — ${e.message}`;
     $('carpetaInfo').innerHTML = `<span style="color:#e08a7a">${msg}</span>`;
     log('Carpeta: ' + e.name + ' ' + e.message);
@@ -192,7 +200,7 @@ function tomarArchivos(lista) {
 }
 $('inFotos').onchange = e => tomarArchivos(e.target.files);
 $('inFotosCarpeta').onchange = e => tomarArchivos(e.target.files);
-function actualizar() { $('btnProcesar').disabled = corriendo || !archivos.length || (hayFS && !carpeta); }
+function actualizar() { $('btnProcesar').disabled = corriendo || !archivos.length || (!carpeta && !modoZip); }
 
 $('btnPausa').onclick = () => { pausado = !pausado; $('btnPausa').textContent = pausado ? 'Continuar' : 'Pausar'; };
 
@@ -240,7 +248,7 @@ $('btnProcesar').onclick = async () => {
   corriendo = true; pausado = false; actualizar();
   $('btnPausa').disabled = false; $('previews').innerHTML = '';
   const web = +$('cfgWeb').value, q = +$('cfgQ').value, th = +$('cfgThumb').value, conf = +$('cfgConf').value, fina = $('cfgFina').checked;
-  const zip = hayFS ? null : new JSZip();
+  const zip = carpeta ? null : new JSZip();
   const fotos = existentes.fotos.slice(), rostros = existentes.rostros.slice();
   const escala = existentes.escala;
   const ya = new Set(fotos.map(f => f.f));
@@ -287,8 +295,10 @@ $('btnProcesar').onclick = async () => {
   await guardarIndice();
   if (zip) {
     log('Generando .zip…');
-    const b = await zip.generateAsync({ type: 'blob' });
-    const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'galeria-datos.zip'; a.click();
+    const b = await zip.generateAsync({ type: 'blob', compression: 'STORE' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'galeria-datos.zip';
+    document.body.append(a); a.click(); a.remove();
+    log('Si no se descargó solo, usa el enlace: '); const l = document.createElement('a'); l.href = a.href; l.download = a.download; l.textContent = '⬇ Descargar galeria-datos.zip'; l.style.color = 'var(--accent)'; $('log').append(l);
   }
   existentes = { fotos, rostros, escala };
   const min = ((performance.now() - t0) / 60000).toFixed(1);
