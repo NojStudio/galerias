@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="robots" content="noindex">
+<title>Prueba · Fotos</title>
+<meta name="description" content="Encuentra tus fotos del evento con una selfie. Fotografía por No'j Studio.">
+<meta property="og:title" content="Casa 1916 · Noche de Casino — Encuentra tus fotos">
+<meta property="og:description" content="Tómate una selfie y descarga todas las fotos donde apareces.">
+<link rel="stylesheet" href="../_lib/fonts/fonts.css">
+<script src="config.js"></script>
+<style>
+:root{--black:#0a0a0a;--white:#f4f2ed;--gray:#8a8a8a;--dim:rgba(244,242,237,.6);--accent:#6fbdaa;--accent2:#c8b89a;--line:rgba(255,255,255,.08)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.5;min-height:100vh;overflow-x:hidden}
+a{color:inherit}
+.bebas{font-family:'Bebas Neue',sans-serif;font-weight:400}
+nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.25rem;padding-top:max(.9rem,env(safe-area-inset-top));background:rgba(10,10,10,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.marca{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.marca b{font-family:'Bebas Neue';font-weight:400;font-size:1.1rem;letter-spacing:.18em}
+.cliente{display:flex;align-items:center;gap:.55rem;color:var(--dim);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;max-width:50%}
+.cliente img{max-height:28px;max-width:120px;object-fit:contain}
+.cliente span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* HERO */
+.hero{position:relative;padding:3.2rem 1.4rem 2.6rem;max-width:760px;margin:0 auto;text-align:center}
+.marcas-agua{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+.marcas-agua svg{position:absolute;width:520px;right:-180px;top:-60px;opacity:.035}
+.eyebrow{display:inline-flex;align-items:center;gap:.8rem;color:var(--accent);font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase}
+.eyebrow::before,.eyebrow::after{content:'';width:1.8rem;height:1px;background:var(--accent)}
+h1{font-family:'Bebas Neue';font-weight:400;font-size:clamp(3.4rem,15vw,7rem);line-height:.92;letter-spacing:.02em;margin:1.1rem 0 .7rem}
+.meta{color:var(--gray);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
+.sub{font-size:1.08rem;color:var(--dim);margin:1.8rem auto 1.6rem;max-width:430px}
+.acciones{display:flex;flex-direction:column;gap:.7rem;max-width:360px;margin:0 auto}
+.btn{appearance:none;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.6rem;padding:1.05rem 1.4rem;font:500 .8rem 'DM Sans';letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:background .2s,opacity .2s}
+.btn-p{background:var(--accent);color:var(--black)}
+.btn-p:active{opacity:.85}
+.btn-s{background:transparent;color:var(--white);border:1px solid rgba(244,242,237,.22)}
+.btn svg{width:18px;height:18px;flex:none}
+.privado{display:flex;gap:.5rem;justify-content:center;align-items:flex-start;color:var(--gray);font-size:.76rem;margin:1.2rem auto 0;max-width:300px;text-align:left}.privado svg{flex:none;margin-top:3px}
+.ver-todas{display:inline-block;margin-top:1.6rem;color:var(--dim);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(244,242,237,.25);padding-bottom:2px}
+
+/* ESPERA */
+.espera{max-width:480px;margin:0 auto 3rem;padding:2rem 1.6rem;border:1px solid var(--line);text-align:center}
+.espera .bebas{font-size:2rem;letter-spacing:.04em;color:var(--accent)}
+.espera p{color:var(--dim);margin-top:.5rem}
+
+/* ESTADO */
+.estado{display:none;flex-direction:column;align-items:center;gap:1.1rem;padding:3rem 1.4rem;text-align:center}
+.estado.on{display:flex}
+.estado img{width:120px;height:120px;object-fit:cover;border-radius:50%;border:1px solid var(--line)}
+.scan{position:relative;width:120px;height:120px}
+.scan::after{content:'';position:absolute;left:-6px;right:-6px;height:2px;background:var(--accent);box-shadow:0 0 14px var(--accent);animation:scan 1.4s ease-in-out infinite alternate;top:0}
+@keyframes scan{to{top:100%}}
+.estado p{color:var(--dim);font-size:.92rem}
+
+/* SECCIONES / GRID */
+section.bloque{padding:2rem 0 2.6rem;border-top:1px solid var(--line)}
+.cab{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;padding:0 1.25rem 1.1rem;max-width:1400px;margin:0 auto}
+.cab h2{font-family:'Bebas Neue';font-weight:400;font-size:2.2rem;letter-spacing:.03em;line-height:1}
+.cab small{display:block;color:var(--gray);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.35rem}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;max-width:1400px;margin:0 auto}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1050px){.grid{grid-template-columns:repeat(4,1fr);padding:0 1.25rem}}
+.grid button{position:relative;border:0;padding:0;background:#151515;aspect-ratio:4/5;overflow:hidden;cursor:zoom-in;display:block}
+.grid img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .4s,transform .6s}
+.grid img.ok{opacity:1}
+.grid button:hover img{transform:scale(1.03)}
+.pie-res{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;padding:1.4rem 1.25rem 0}
+.pie-res .btn{min-width:220px}
+.vacio{padding:1rem 1.4rem 0;max-width:520px;margin:0 auto;text-align:center;color:var(--dim)}
+.vacio ul{list-style:none;margin:1rem 0 1.4rem;color:var(--gray);font-size:.9rem}
+.vacio li::before{content:'— ';color:var(--accent)}
+#mas{display:block;margin:1.4rem auto 0}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;z-index:50;background:#060606;display:none;flex-direction:column}
+.lb.on{display:flex}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.1rem;padding-top:max(.9rem,env(safe-area-inset-top));color:var(--gray);font-size:.75rem;letter-spacing:.16em}
+.lb-x{background:none;border:0;color:var(--white);font-size:1.9rem;line-height:1;cursor:pointer;padding:.2rem .5rem}
+.lb-img{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;position:relative;touch-action:pan-y}
+.lb-img img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);border:0;color:var(--white);width:46px;height:64px;font-size:1.6rem;cursor:pointer;display:none}
+@media(hover:hover){.lb-nav{display:block}}
+.lb-prev{left:0}.lb-next{right:0}
+.lb-bot{display:flex;gap:.6rem;padding:1rem 1.1rem;padding-bottom:max(1rem,env(safe-area-inset-bottom));justify-content:center}
+.lb-bot .btn{flex:1;max-width:260px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:3rem 1.4rem calc(3rem + env(safe-area-inset-bottom));text-align:center}
+footer .bebas{font-size:2.3rem;letter-spacing:.03em;line-height:1;margin:1rem 0 .5rem}
+footer p{color:var(--dim);max-width:420px;margin:0 auto 1.6rem}
+footer .acciones{max-width:320px}
+footer .legal{color:#555;font-size:.7rem;margin-top:2rem;letter-spacing:.06em}
+
+.toast{position:fixed;left:50%;bottom:calc(1.2rem + env(safe-area-inset-bottom));transform:translate(-50%,calc(100% + 4rem));visibility:hidden;background:var(--white);color:var(--black);padding:.85rem 1.2rem;font-size:.86rem;z-index:60;transition:transform .35s;max-width:calc(100% - 2rem);text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.toast.on{transform:translate(-50%,0);visibility:visible}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="marca" id="lnkSitio" href="#">
+    <svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true"><g stroke="#f4f2ed" stroke-width="6" stroke-linecap="square" fill="none"><polyline points="8,28 8,8 28,8"/><polyline points="72,8 92,8 92,28"/><polyline points="92,72 92,92 72,92"/><polyline points="28,92 8,92 8,72"/></g><line x1="20" y1="20" x2="80" y2="80" stroke="#f4f2ed" stroke-width="6" stroke-linecap="square"/><line x1="80" y1="20" x2="20" y2="80" stroke="#f4f2ed" stroke-width="6" stroke-linecap="square"/><circle cx="50" cy="50" r="6.5" fill="#0a0a0a"/><circle cx="50" cy="50" r="3.5" fill="#6fbdaa"/></svg>
+    <b>NO'J STUDIO</b>
+  </a>
+  <div class="cliente" id="navCliente"></div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="marcas-agua"><svg viewBox="0 0 100 100"><g stroke="#fff" stroke-width="5" stroke-linecap="square" fill="none"><polyline points="8,28 8,8 28,8"/><polyline points="72,8 92,8 92,28"/><polyline points="92,72 92,92 72,92"/><polyline points="28,92 8,92 8,72"/></g><line x1="20" y1="20" x2="80" y2="80" stroke="#fff" stroke-width="5"/><line x1="80" y1="20" x2="20" y2="80" stroke="#fff" stroke-width="5"/></svg></div>
+  <div class="eyebrow" id="eyebrow">Galería del evento</div>
+  <h1 id="titulo">Alfombra Roja</h1>
+  <div class="meta" id="meta"></div>
+
+  <div id="bloqueBuscar">
+    <p class="sub">Tómate una selfie y te mostramos todas las fotos donde apareces, listas para guardar.</p>
+    <div class="acciones">
+      <button class="btn btn-p" id="btnSelfie">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        Tomarme una selfie
+      </button>
+      <button class="btn btn-s" id="btnSubir">Subir una foto mía</button>
+    </div>
+    <input type="file" id="inSelfie" accept="image/*" capture="user" hidden>
+    <input type="file" id="inSubir" accept="image/*" hidden>
+    <div class="privado">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      Tu selfie se analiza en tu teléfono. No se sube ni se guarda.
+    </div>
+    <a class="ver-todas" href="#todas" id="lnkTodas">Ver todas las fotos</a>
+  </div>
+</header>
+
+<div class="espera" id="espera" hidden>
+  <div class="bebas">Tus fotos vienen en camino</div>
+  <p id="esperaTxt">Estamos editando las fotos del evento. Vuelve a este mismo link a partir del día indicado: aquí podrás encontrarte con una selfie.</p>
+</div>
+
+<div class="estado" id="estado">
+  <div class="scan"><img id="miniSelfie" alt=""></div>
+  <p id="estadoTxt">Cargando…</p>
+</div>
+
+<section class="bloque" id="resultados" hidden>
+  <div class="cab"><div><small id="resSub">Resultado</small><h2 id="resTit">Tus fotos</h2></div></div>
+  <div class="grid" id="gridRes"></div>
+  <div class="vacio" id="resVacio" hidden>
+    <p>No encontramos coincidencias claras. Prueba otra selfie:</p>
+    <ul><li>De frente y con buena luz</li><li>Sin lentes de sol ni cubrebocas</li><li>Solo tu cara, sin otras personas</li></ul>
+  </div>
+  <div class="pie-res">
+    <button class="btn btn-p" id="btnTodasMias" hidden>Guardar todas mis fotos</button>
+    <button class="btn btn-s" id="btnOtra">Probar con otra selfie</button>
+  </div>
+  <div id="bloquePosibles" hidden style="margin-top:2.6rem">
+    <div class="cab"><div><small>Revisa estas también</small><h2>¿También eres tú?</h2></div></div>
+    <div class="grid" id="gridPos"></div>
+  </div>
+</section>
+
+<section class="bloque" id="todas" hidden>
+  <div class="cab"><div><small id="todasSub">Galería completa</small><h2>Todas las fotos</h2></div></div>
+  <div class="grid" id="gridTodas"></div>
+  <button class="btn btn-s" id="mas" hidden>Cargar más</button>
+</section>
+
+<footer>
+  <svg width="44" height="44" viewBox="0 0 100 100" aria-hidden="true"><g style="stroke:var(--accent)" stroke-width="6" stroke-linecap="square" fill="none"><polyline points="8,28 8,8 28,8"/><polyline points="72,8 92,8 92,28"/><polyline points="92,72 92,92 72,92"/><polyline points="28,92 8,92 8,72"/></g><line x1="20" y1="20" x2="80" y2="80" style="stroke:var(--accent)" stroke-width="6" stroke-linecap="square"/><line x1="80" y1="20" x2="20" y2="80" style="stroke:var(--accent)" stroke-width="6" stroke-linecap="square"/><circle cx="50" cy="50" r="6.5" fill="#0a0a0a"/><circle cx="50" cy="50" r="3.5" fill="#f4f2ed"/></svg>
+  <div class="bebas">Fotografía por No'j Studio</div>
+  <p>Foto, video, drone y experiencias para marcas y eventos en CDMX. Si compartes tu foto, etiquétanos: nos encanta verlas.</p>
+  <div class="acciones">
+    <a class="btn btn-p" id="lnkIg" target="_blank" rel="noopener">Seguir en Instagram</a>
+    <a class="btn btn-s" id="lnkWa" target="_blank" rel="noopener">Cotizar mi evento</a>
+  </div>
+  <div class="legal">© No'j Studio · Las fotos son para uso personal. Para uso comercial, contáctanos.</div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <div class="lb-top"><span id="lbCont"></span><button class="lb-x" id="lbX" aria-label="Cerrar">×</button></div>
+  <div class="lb-img" id="lbArea">
+    <img id="lbImg" alt="">
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Siguiente">›</button>
+  </div>
+  <div class="lb-bot">
+    <button class="btn btn-p" id="lbGuardar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Guardar foto
+    </button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../_lib/face-api.js" defer></script>
+<script src="../_lib/rostros.js" defer></script>
+<script>
+const C = window.GALERIA || {};
+const $ = id => document.getElementById(id);
+let FOTOS = [], ROSTROS = null, lista = [], pos = 0;
+const blobs = new Map();
+const esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.userAgent));
+
+/* ---------- Marca ---------- */
+if (C.acento) { document.documentElement.style.setProperty('--accent', C.acento); }
+document.title = `${C.evento || 'Galería'} · Fotos · No'j Studio`;
+$('titulo').textContent = C.evento || 'Galería';
+$('eyebrow').textContent = C.cliente ? `${C.cliente} × No'j Studio` : "Galería · No'j Studio";
+$('meta').textContent = [C.fecha, C.lugar, C.hashtag].filter(Boolean).join('  ·  ');
+$('navCliente').innerHTML = C.logoCliente ? `<img src="${C.logoCliente}" alt="${C.cliente || ''}">` : `<span>${C.cliente || ''}</span>`;
+$('lnkSitio').href = C.sitio || '#';
+$('lnkIg').href = `https://instagram.com/${C.instagram || 'nojstudiomx'}`;
+$('lnkIg').textContent = `Seguir a @${C.instagram || 'nojstudiomx'}`;
+$('lnkWa').href = `https://wa.me/${C.whatsapp || ''}?text=${encodeURIComponent(`Hola No'j, vi la galería de ${C.evento || 'un evento'} y quiero cotizar cobertura para mi evento.`)}`;
+if (C.disponibleDesde) $('esperaTxt').textContent = `Estamos editando las fotos del evento. Vuelve a este mismo link a partir del ${C.disponibleDesde}: aquí podrás encontrarte con una selfie.`;
+
+const url = f => 'fotos/web/' + f.f, mini = f => 'fotos/thumb/' + f.f;
+function toast(t, ms = 3800) { const e = $('toast'); e.textContent = t; e.classList.add('on'); clearTimeout(e._t); e._t = setTimeout(() => e.classList.remove('on'), ms); }
+
+/* ---------- Datos ---------- */
+fetch('data/fotos.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : { fotos: [] }).catch(() => ({ fotos: [] })).then(d => {
+  FOTOS = (d.fotos || []).map((f, i) => ({ ...f, i }));
+  FOTOS.sort((a, b) => a.f.localeCompare(b.f, undefined, { numeric: true }));
+  if (!FOTOS.length) { $('bloqueBuscar').hidden = true; $('espera').hidden = false; return; }
+  $('todasSub').textContent = `${FOTOS.length} fotos`;
+  $('lnkTodas').textContent = `Ver todas las fotos (${FOTOS.length})`;
+  $('todas').hidden = false; pintarTodas();
+  // precarga en segundo plano del índice y modelos para que la búsqueda sea inmediata
+  const pre = () => { cargarRostros(); window.Rostros && Rostros.cargar(['tinyFaceDetector', 'faceLandmark68Net', 'faceRecognitionNet']).catch(() => {}); };
+  window.requestIdleCallback ? requestIdleCallback(pre, { timeout: 3000 }) : setTimeout(pre, 1500);
+});
+let _rost;
+function cargarRostros() {
+  return _rost ||= fetch('data/rostros.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    ROSTROS = d.rostros.map(([i, b]) => [i, Rostros.decodificar(b, d.escala)]); return ROSTROS;
+  });
+}
+
+/* ---------- Grids ---------- */
+function celda(f, coleccion, k, ansioso) {
+  const b = document.createElement('button');
+  b.setAttribute('aria-label', 'Ver foto');
+  const im = new Image(); im.loading = ansioso ? 'eager' : 'lazy'; im.decoding = 'async'; im.alt = '';
+  im.onload = () => im.classList.add('ok'); im.src = mini(f);
+  b.append(im); b.onclick = () => abrir(coleccion, k); return b;
+}
+let pintadas = 0; const LOTE = 40;
+function pintarTodas() {
+  const g = $('gridTodas'), hasta = Math.min(FOTOS.length, pintadas + LOTE);
+  for (let k = pintadas; k < hasta; k++) g.append(celda(FOTOS[k], FOTOS, k));
+  pintadas = hasta; $('mas').hidden = pintadas >= FOTOS.length;
+}
+$('mas').onclick = pintarTodas;
+new IntersectionObserver(e => { if (e[0].isIntersecting && pintadas && pintadas < FOTOS.length) pintarTodas(); }, { rootMargin: '800px' }).observe($('mas'));
+
+/* ---------- Selfie ---------- */
+$('btnSelfie').onclick = () => $('inSelfie').click();
+$('btnSubir').onclick = () => $('inSubir').click();
+$('btnOtra').onclick = () => $('inSelfie').click();
+$('inSelfie').onchange = e => buscar(e.target.files[0], e.target);
+$('inSubir').onchange = e => buscar(e.target.files[0], e.target);
+
+async function buscar(archivo, input) {
+  if (!archivo) return;
+  input.value = '';
+  $('resultados').hidden = true; $('estado').classList.add('on');
+  $('miniSelfie').src = URL.createObjectURL(archivo);
+  const txt = t => $('estadoTxt').textContent = t;
+  $('estado').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  try {
+    while (!window.Rostros || !window.faceapi) await new Promise(r => setTimeout(r, 100));
+    const canvas = await Rostros.aCanvas(archivo, 1024);
+    const [descs] = await Promise.all([Rostros.rostroDeSelfie(canvas, txt), cargarRostros()]);
+    if (!descs) { $('estado').classList.remove('on'); toast('No detectamos un rostro. Intenta de frente y con buena luz.', 5000); return; }
+    txt(`Buscando entre ${FOTOS.length} fotos…`);
+    const mejor = new Map();
+    for (const [i, d] of ROSTROS) { const dist = Math.min(...descs.map(q => Rostros.distancia(q, d))); if (!mejor.has(i) || dist < mejor.get(i)) mejor.set(i, dist); }
+    const porIdx = new Map(FOTOS.map(f => [f.i, f]));
+    const orden = [...mejor].filter(([i]) => porIdx.has(i)).sort((a, b) => a[1] - b[1]);
+    const mias = orden.filter(([, d]) => d < (C.umbral || 0.45)).map(([i]) => porIdx.get(i));
+    let posibles = orden.filter(([, d]) => d >= (C.umbral || 0.45) && d < (C.umbralPosible || 0.53)).slice(0, 24);
+    // si no hubo coincidencias claras, sugerimos las más parecidas (pose difícil, ojos cerrados, etc.)
+    if (!mias.length && !posibles.length) posibles = orden.filter(([, d]) => d < 0.62).slice(0, 8);
+    posibles = posibles.map(([i]) => porIdx.get(i));
+    mostrar(mias, posibles);
+  } catch (e) {
+    console.error(e); $('estado').classList.remove('on');
+    toast('Algo falló al analizar la foto. Intenta de nuevo.', 5000);
+  }
+}
+let MIAS = [], POS = [];
+function mostrar(mias, posibles) {
+  MIAS = mias; POS = posibles;
+  $('estado').classList.remove('on'); $('resultados').hidden = false;
+  $('resTit').textContent = mias.length ? (mias.length === 1 ? 'Encontramos 1 foto tuya' : `Encontramos ${mias.length} fotos tuyas`) : 'Sin coincidencias claras';
+  $('resSub').textContent = C.evento || 'Resultado';
+  const g = $('gridRes'); g.innerHTML = ''; mias.forEach((f, k) => g.append(celda(f, MIAS, k, true)));
+  const gp = $('gridPos'); gp.innerHTML = ''; posibles.forEach((f, k) => gp.append(celda(f, POS, k, true)));
+  $('bloquePosibles').hidden = !posibles.length;
+  $('resVacio').hidden = !!mias.length;
+  $('btnTodasMias').hidden = mias.length < 2;
+  $('btnTodasMias').textContent = `Guardar mis ${mias.length} fotos`;
+  mias.slice(0, 12).forEach(precargar);
+  $('resultados').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ---------- Guardar / compartir ---------- */
+function nombre(f) { return `${C.prefijoArchivo || 'noj'}-${f.f}`; }
+function precargar(f) {
+  if (!blobs.has(f.f)) blobs.set(f.f, fetch(url(f)).then(r => r.blob()).then(b => new File([b], nombre(f), { type: 'image/jpeg' })).catch(e => { blobs.delete(f.f); throw e; }));
+  return blobs.get(f.f);
+}
+async function guardar(fs) {
+  const archivos = await Promise.all(fs.map(precargar));
+  if (esMovil && navigator.canShare && navigator.canShare({ files: archivos })) {
+    try {
+      await navigator.share({ files: archivos });
+      gracias(); return;
+    } catch (e) {
+      if (e.name === 'AbortError') return;
+      if (e.name === 'NotAllowedError') { toast('Listo para guardar: toca el botón otra vez.'); return; }
+    }
+  }
+  for (const a of archivos) {
+    const l = document.createElement('a'); l.href = URL.createObjectURL(a); l.download = a.name;
+    document.body.append(l); l.click(); l.remove();
+    await new Promise(r => setTimeout(r, 350));
+  }
+  gracias();
+}
+function gracias() { toast(`¡Listo! Si la subes, etiqueta a @${C.instagram || 'nojstudiomx'} ✦`, 4500); }
+$('btnTodasMias').onclick = () => guardar(MIAS);
+$('lbGuardar').onclick = () => guardar([lista[pos]]);
+
+/* ---------- Lightbox ---------- */
+function abrir(col, k) { lista = col; pos = k; $('lb').classList.add('on'); document.body.style.overflow = 'hidden'; ver(); history.pushState({ lb: 1 }, ''); }
+function cerrar(desdeHist) { if (!$('lb').classList.contains('on')) return; $('lb').classList.remove('on'); document.body.style.overflow = ''; if (!desdeHist) history.back(); }
+function ver() {
+  const f = lista[pos]; $('lbImg').src = mini(f);
+  const full = new Image(); full.onload = () => { if (lista[pos] === f) $('lbImg').src = full.src; }; full.src = url(f);
+  $('lbCont').textContent = `${pos + 1} / ${lista.length}`;
+  precargar(f); [pos + 1, pos - 1].forEach(k => { if (lista[k]) new Image().src = mini(lista[k]); });
+}
+function mover(d) { const n = pos + d; if (n >= 0 && n < lista.length) { pos = n; ver(); } }
+$('lbX').onclick = () => cerrar(); $('lbPrev').onclick = () => mover(-1); $('lbNext').onclick = () => mover(1);
+window.addEventListener('popstate', () => cerrar(true));
+document.addEventListener('keydown', e => { if (!$('lb').classList.contains('on')) return; if (e.key === 'Escape') cerrar(); if (e.key === 'ArrowRight') mover(1); if (e.key === 'ArrowLeft') mover(-1); });
+let x0 = null;
+$('lbArea').addEventListener('touchstart', e => x0 = e.touches[0].clientX, { passive: true });
+$('lbArea').addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) mover(dx < 0 ? 1 : -1); x0 = null; });
+</script>
+</body>
+</html>
